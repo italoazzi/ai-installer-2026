@@ -214,35 +214,33 @@
     .sec-head h2 { margin-bottom: 14px; }
     .sec-head p { font-size: clamp(15px, 1.4vw, 17px); color: var(--text-d); line-height: 1.75; }
 
-    /* PAIN — light mood (problema = caos/luce, soluzione = dark/controllo) */
-    .pain {
-      background: #eef2ff;
-      --text:    #0b1a2e;
-      --text-d:  rgba(11,26,46,.62);
-      --text-m:  rgba(11,26,46,.38);
-      --bd:      rgba(11,26,46,.09);
-      --bd-soft: rgba(11,26,46,.15);
-      --blue-glow: rgba(85,112,255,.08);
+    /* PAIN — stessa palette dark, glow caldo/rosso per segnalare "problema" */
+    .pain { background: #06101f; position: relative; overflow: hidden; }
+    .pain::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px; height: 700px;
+      background:
+        radial-gradient(ellipse at 40% 40%, rgba(255,80,60,.07) 0%, transparent 58%),
+        radial-gradient(ellipse at 65% 65%, rgba(251,146,60,.05) 0%, transparent 52%);
+      pointer-events: none; z-index: 0;
     }
-    .pain .lbl { color: rgba(11,26,46,.42); }
-    .pain .d,
-    .pain h2,
-    .pain h3 { color: #0b1a2e; }
-    .pain .sec-head p { color: rgba(11,26,46,.62); }
+    .pain .wrap { position: relative; z-index: 1; }
     .pain-list { margin-top: 60px; }
     .pain-item {
       display: grid; grid-template-columns: 100px 1fr; gap: 40px;
-      padding: 44px 0; border-bottom: 1px solid rgba(11,26,46,.09); align-items: start;
+      padding: 44px 0; border-bottom: 1px solid var(--bd); align-items: start;
     }
     .pain-item:first-child { padding-top: 0; }
     .pain-item:last-child { border-bottom: none; padding-bottom: 0; }
     .pain-n {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 68px; font-weight: 900; letter-spacing: -.04em; line-height: 1;
-      color: rgba(85,112,255,.22); padding-top: 3px;
+      color: rgba(255,90,60,.22); padding-top: 3px;
     }
-    .pain-item h3 { font-size: 22px; margin-bottom: 11px; color: #0b1a2e; }
-    .pain-item p { font-size: 15px; color: rgba(11,26,46,.62); line-height: 1.75; max-width: 580px; }
+    .pain-item h3 { font-size: 22px; margin-bottom: 11px; }
+    .pain-item p { font-size: 15px; color: var(--text-d); line-height: 1.75; max-width: 580px; }
     @media (max-width: 640px) {
       .pain-item { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
       .pain-n { font-size: 44px; }
