@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Grazie — AI Installer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #ededed;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .card {
+      max-width: 560px;
+    }
+    .check {
+      width: 72px;
+      height: 72px;
+      background: #b8ff3f;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 32px;
+      color: #0a0a0a;
+      font-size: 36px;
+      font-weight: 800;
+    }
+    h1 { font-size: 42px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+    p { color: #a0a0a0; font-size: 17px; margin-bottom: 32px; line-height: 1.6; }
+    .next {
+      background: #131313;
+      border: 1px solid #262626;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+    .next h3 { font-size: 16px; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace; color: #b8ff3f; }
+    .next ol { margin-left: 20px; color: #ededed; }
+    .next ol li { padding: 6px 0; font-size: 15px; }
+    a.back {
+      display: inline-block;
+      color: #b8ff3f;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid #262626;
+      padding: 12px 24px;
+      border-radius: 10px;
+    }
+    a.back:hover { background: #131313; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">✓</div>
+    <h1>Richiesta ricevuta.</h1>
+    <p>Grazie. Italo (o qualcuno del team) ti contatta entro 24 ore lavorative per fissare la discovery call.</p>
+
+    <div class="next">
+      <h3>// COSA SUCCEDE ORA</h3>
+      <ol>
+        <li>Ti arriva una mail di conferma + link calendario</li>
+        <li>Scegli lo slot da 30 minuti che ti torna</li>
+        <li>Prima della call ti mandiamo 4 domande brevi (5 min)</li>
+        <li>Dopo la call hai un piano scritto. Stop.</li>
+      </ol>
+    </div>
+
+    <a href="/" class="back">← Torna alla home</a>
+  </div>
+</body>
+</html>
