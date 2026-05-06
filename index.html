@@ -214,22 +214,35 @@
     .sec-head h2 { margin-bottom: 14px; }
     .sec-head p { font-size: clamp(15px, 1.4vw, 17px); color: var(--text-d); line-height: 1.75; }
 
-    /* PAIN */
-    .pain { background: #06101f; }
+    /* PAIN — light mood (problema = caos/luce, soluzione = dark/controllo) */
+    .pain {
+      background: #eef2ff;
+      --text:    #0b1a2e;
+      --text-d:  rgba(11,26,46,.62);
+      --text-m:  rgba(11,26,46,.38);
+      --bd:      rgba(11,26,46,.09);
+      --bd-soft: rgba(11,26,46,.15);
+      --blue-glow: rgba(85,112,255,.08);
+    }
+    .pain .lbl { color: rgba(11,26,46,.42); }
+    .pain .d,
+    .pain h2,
+    .pain h3 { color: #0b1a2e; }
+    .pain .sec-head p { color: rgba(11,26,46,.62); }
     .pain-list { margin-top: 60px; }
     .pain-item {
       display: grid; grid-template-columns: 100px 1fr; gap: 40px;
-      padding: 44px 0; border-bottom: 1px solid var(--bd); align-items: start;
+      padding: 44px 0; border-bottom: 1px solid rgba(11,26,46,.09); align-items: start;
     }
     .pain-item:first-child { padding-top: 0; }
     .pain-item:last-child { border-bottom: none; padding-bottom: 0; }
     .pain-n {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 68px; font-weight: 900; letter-spacing: -.04em; line-height: 1;
-      color: rgba(85,112,255,.20); padding-top: 3px;
+      color: rgba(85,112,255,.22); padding-top: 3px;
     }
-    .pain-item h3 { font-size: 22px; margin-bottom: 11px; }
-    .pain-item p { font-size: 15px; color: var(--text-d); line-height: 1.75; max-width: 580px; }
+    .pain-item h3 { font-size: 22px; margin-bottom: 11px; color: #0b1a2e; }
+    .pain-item p { font-size: 15px; color: rgba(11,26,46,.62); line-height: 1.75; max-width: 580px; }
     @media (max-width: 640px) {
       .pain-item { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
       .pain-n { font-size: 44px; }
@@ -265,9 +278,48 @@
     .ar-bullets { list-style: none; }
     .ar-bullets li { font-size: 13px; color: var(--text-d); padding: 4px 0 4px 18px; position: relative; }
     .ar-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-size: 11px; top: 5px; }
+
+    /* STATUS FLIP — demo animato cambio stato */
+    .status-flip {
+      margin-top: 22px;
+      display: inline-block;
+      position: relative;
+      height: 40px;
+      min-width: 300px;
+    }
+    .sf-state {
+      display: flex; align-items: center; gap: 10px;
+      position: absolute; top: 0; left: 0;
+      background: rgba(85,112,255,.06);
+      border: 1px solid rgba(85,112,255,.12);
+      border-radius: 10px;
+      padding: 9px 15px;
+      white-space: nowrap;
+      font-size: 12.5px; font-weight: 500; color: var(--text-d);
+      font-family: 'SF Mono','Fira Code',monospace;
+    }
+    .sf-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .sf-dot-wait { background: #fb923c; box-shadow: 0 0 6px rgba(251,146,60,.5); }
+    .sf-dot-done { background: #4ade80; box-shadow: 0 0 6px rgba(74,222,128,.5); }
+    .sf-before { animation: sf-b 6s ease-in-out infinite; }
+    .sf-after  { animation: sf-a 6s ease-in-out infinite; opacity: 0; }
+    @keyframes sf-b {
+      0%,42%  { opacity:1; transform:translateY(0); }
+      50%,93% { opacity:0; transform:translateY(-6px); }
+      100%    { opacity:1; transform:translateY(0); }
+    }
+    @keyframes sf-a {
+      0%,42%  { opacity:0; transform:translateY(6px); }
+      50%,93% { opacity:1; transform:translateY(0); }
+      100%    { opacity:0; transform:translateY(6px); }
+    }
+
     @media (max-width: 720px) {
       .agent-row { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
       .ar-idx { font-size: 38px; }
+      .status-flip { min-width: 260px; }
     }
 
     /* PROCESS */
@@ -621,7 +673,7 @@
           <div class="ar-cat">Intake</div>
         </div>
         <div class="ar-right">
-          <h3>Agente di acquisizione clienti</h3>
+          <h3>Nessun cliente nuovo si perde nel caos</h3>
           <p class="ar-desc">Qualifica i nuovi contatti, raccoglie le informazioni essenziali via WhatsApp o email, pre-popola la pratica nel tuo gestionale. Tu apri il fascicolo e trovi tutto già pronto.</p>
           <ul class="ar-bullets">
             <li>Intake automatico via WhatsApp Business / form / email</li>
@@ -636,7 +688,7 @@
           <div class="ar-cat">Drafting</div>
         </div>
         <div class="ar-right">
-          <h3>Agente di redazione documenti</h3>
+          <h3>Mai più ore a costruire documenti da zero</h3>
           <p class="ar-desc">Genera bozze di atti, comunicazioni, relazioni e lettere usando i tuoi template storici e il tuo tono. Tu editi e approvi — non scrivi da zero ogni volta.</p>
           <ul class="ar-bullets">
             <li>Pesca e adatta i tuoi template storici</li>
@@ -651,13 +703,23 @@
           <div class="ar-cat">Scadenze</div>
         </div>
         <div class="ar-right">
-          <h3>Agente di gestione relazioni</h3>
+          <h3>Zero scadenze dimenticate, zero follow-up manuali</h3>
           <p class="ar-desc">Mantiene le relazioni vive con clienti e lead. Promemoria scadenze, richieste documenti ricorrenti, check-in mensili — al posto tuo, nel tuo nome, con il tuo tono.</p>
           <ul class="ar-bullets">
             <li>Sequence automatiche su email e WhatsApp</li>
             <li>Personalizzazione basata sullo storico cliente</li>
             <li>Alert immediato quando serve intervento umano</li>
           </ul>
+          <div class="status-flip">
+            <div class="sf-state sf-before">
+              <span class="sf-dot sf-dot-wait"></span>
+              <span>Richiesta documenti — in attesa · 3 giorni</span>
+            </div>
+            <div class="sf-state sf-after">
+              <span class="sf-dot sf-dot-done"></span>
+              <span>Inviata automaticamente · 4 min fa</span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="agent-row fu">
@@ -666,7 +728,7 @@
           <div class="ar-cat">Normativa</div>
         </div>
         <div class="ar-right">
-          <h3>Agente di analisi e normativa</h3>
+          <h3>Normativa in secondi, decisioni tue</h3>
           <p class="ar-desc">Fa ricerca normativa, analizza documenti, produce report mensili per i clienti. Tu dedichi le ore alle decisioni, non alla raccolta e sintesi di dati.</p>
           <ul class="ar-bullets">
             <li>Ricerca INPS, circolari, sentenze, normativa fiscale</li>
