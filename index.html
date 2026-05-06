@@ -216,38 +216,50 @@
 
     /* PAIN */
     .pain { background: var(--bg); }
-    .pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 52px; }
-    .pain-card {
-      background: var(--bg3); border: 1px solid var(--bd); border-radius: 16px;
-      padding: 28px; transition: all .3s;
+    .pain-list { margin-top: 60px; }
+    .pain-item {
+      display: grid; grid-template-columns: 100px 1fr; gap: 40px;
+      padding: 44px 0; border-bottom: 1px solid var(--bd); align-items: start;
     }
-    .pain-card:hover { border-color: rgba(255,95,95,.22); transform: translateY(-3px); }
-    .pain-icon { font-size: 22px; margin-bottom: 16px; }
-    .pain-card h3 { margin-bottom: 10px; }
-    .pain-card p { font-size: 14px; color: var(--text-d); line-height: 1.65; }
-    @media (max-width: 720px) { .pain-grid { grid-template-columns: 1fr; } }
+    .pain-item:first-child { padding-top: 0; }
+    .pain-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .pain-n {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 68px; font-weight: 900; letter-spacing: -.04em; line-height: 1;
+      color: rgba(85,112,255,.13); padding-top: 3px;
+    }
+    .pain-item h3 { font-size: 22px; margin-bottom: 11px; }
+    .pain-item p { font-size: 15px; color: var(--text-d); line-height: 1.75; max-width: 580px; }
+    @media (max-width: 640px) {
+      .pain-item { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
+      .pain-n { font-size: 44px; }
+    }
 
     /* INSTALL */
     .install { background: var(--bg2); }
-    .agents-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 52px; }
-    .agent-card {
-      background: var(--bg3); border: 1px solid var(--bd); border-radius: 16px;
-      padding: 30px; transition: all .3s; position: relative; overflow: hidden;
+    .agent-rows { margin-top: 60px; }
+    .agent-row {
+      display: grid; grid-template-columns: 180px 1fr; gap: 56px;
+      padding: 44px 0; border-bottom: 1px solid var(--bd); align-items: start;
     }
-    .agent-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(85,112,255,.3), transparent);
-      opacity: 0; transition: opacity .3s;
+    .agent-row:first-child { padding-top: 0; }
+    .agent-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .ar-left { padding-top: 4px; }
+    .ar-idx {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 52px; font-weight: 900; letter-spacing: -.04em; line-height: 1;
+      color: rgba(85,112,255,.1); margin-bottom: 8px;
     }
-    .agent-card:hover::before { opacity: 1; }
-    .agent-card:hover { border-color: rgba(85,112,255,.2); transform: translateY(-3px); }
-    .agent-num { font-size: 11px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
-    .agent-card h3 { font-size: 21px; margin-bottom: 9px; }
-    .agent-desc { font-size: 14px; color: var(--text-d); margin-bottom: 18px; line-height: 1.65; }
-    .agent-list { list-style: none; }
-    .agent-list li { font-size: 13px; color: var(--text-d); padding: 4px 0 4px 18px; position: relative; }
-    .agent-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-size: 11px; top: 5px; }
-    @media (max-width: 720px) { .agents-grid { grid-template-columns: 1fr; } }
+    .ar-cat { font-size: 11px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--blue); }
+    .ar-right h3 { font-size: 22px; margin-bottom: 10px; }
+    .ar-desc { font-size: 15px; color: var(--text-d); margin-bottom: 20px; line-height: 1.75; max-width: 560px; }
+    .ar-bullets { list-style: none; }
+    .ar-bullets li { font-size: 13px; color: var(--text-d); padding: 4px 0 4px 18px; position: relative; }
+    .ar-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-size: 11px; top: 5px; }
+    @media (max-width: 720px) {
+      .agent-row { grid-template-columns: 1fr; gap: 16px; padding: 32px 0; }
+      .ar-idx { font-size: 38px; }
+    }
 
     /* PROCESS */
     .process { background: var(--bg); }
@@ -511,21 +523,27 @@
       <h2 class="d">L'AI generica non capisce come lavori tu.</h2>
       <p>ChatGPT e i tool SaaS standard sono pensati per tutti — cioè per nessuno in particolare. Un CDL con Zucchetti, 80 clienti e 3 collaboratori ha bisogno di qualcosa di diverso.</p>
     </div>
-    <div class="pain-grid">
-      <div class="pain-card fu">
-        <div class="pain-icon">⏱</div>
-        <h3>Perdi ore in lavori identici</h3>
-        <p>Ogni cliente nuovo: stessa email, stessa richiesta documenti, stessa bozza. L'AI generica non conosce i tuoi clienti, i tuoi template, il tuo tono — riparti da zero ogni volta.</p>
+    <div class="pain-list">
+      <div class="pain-item fu">
+        <span class="pain-n">01</span>
+        <div>
+          <h3>Perdi ore in lavori identici</h3>
+          <p>Ogni cliente nuovo: stessa email, stessa richiesta documenti, stessa bozza. L'AI generica non conosce i tuoi clienti, i tuoi template, il tuo tono — riparti da zero ogni volta.</p>
+        </div>
       </div>
-      <div class="pain-card fu">
-        <div class="pain-icon">🔗</div>
-        <h3>I tuoi tool sono isole</h3>
-        <p>Gestionale, email, WhatsApp, Drive, portali degli ordini. Ogni dato che vive in un posto deve essere copiato a mano in un altro. Il vero costo invisibile del tuo studio.</p>
+      <div class="pain-item fu">
+        <span class="pain-n">02</span>
+        <div>
+          <h3>I tuoi tool sono isole</h3>
+          <p>Gestionale, email, WhatsApp, Drive, portali degli ordini. Ogni dato che vive in un posto deve essere copiato a mano in un altro. Il vero costo invisibile del tuo studio.</p>
+        </div>
       </div>
-      <div class="pain-card fu">
-        <div class="pain-icon">💸</div>
-        <h3>Abbonamenti che usi al 10%</h3>
-        <p>Tool AI verticali costosi, training a metà, dashboard mai aperte. Risultato: spesa che cresce, operatività che non cambia, team che torna alle abitudini di prima.</p>
+      <div class="pain-item fu">
+        <span class="pain-n">03</span>
+        <div>
+          <h3>Abbonamenti che usi al 10%</h3>
+          <p>Tool AI verticali costosi, training a metà, dashboard mai aperte. Risultato: spesa che cresce, operatività che non cambia, team che torna alle abitudini di prima.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -539,46 +557,66 @@
       <h2 class="d">Agenti specifici.<br>Dentro la tua operatività.</h2>
       <p>Non installiamo "l'AI". Installiamo agenti che fanno cose precise, integrate con i tool che già usi. Zero migrazioni, zero nuove piattaforme da imparare.</p>
     </div>
-    <div class="agents-grid">
-      <div class="agent-card fu">
-        <div class="agent-num">// 01 — INTAKE</div>
-        <h3>Agente di acquisizione clienti</h3>
-        <p class="agent-desc">Qualifica i nuovi contatti, raccoglie le informazioni essenziali via WhatsApp o email, pre-popola la pratica nel tuo gestionale. Tu apri il fascicolo e trovi tutto già pronto.</p>
-        <ul class="agent-list">
-          <li>Intake automatico via WhatsApp Business / form / email</li>
-          <li>Salvataggio strutturato in Notion, Drive o CRM esistente</li>
-          <li>Notifica al team con priorità intelligente</li>
-        </ul>
+    <div class="agent-rows">
+      <div class="agent-row fu">
+        <div class="ar-left">
+          <div class="ar-idx">01</div>
+          <div class="ar-cat">Intake</div>
+        </div>
+        <div class="ar-right">
+          <h3>Agente di acquisizione clienti</h3>
+          <p class="ar-desc">Qualifica i nuovi contatti, raccoglie le informazioni essenziali via WhatsApp o email, pre-popola la pratica nel tuo gestionale. Tu apri il fascicolo e trovi tutto già pronto.</p>
+          <ul class="ar-bullets">
+            <li>Intake automatico via WhatsApp Business / form / email</li>
+            <li>Salvataggio strutturato in Notion, Drive o CRM esistente</li>
+            <li>Notifica al team con priorità intelligente</li>
+          </ul>
+        </div>
       </div>
-      <div class="agent-card fu">
-        <div class="agent-num">// 02 — DRAFTING</div>
-        <h3>Agente di redazione documenti</h3>
-        <p class="agent-desc">Genera bozze di atti, comunicazioni, relazioni e lettere usando i tuoi template storici e il tuo tono. Tu editi e approvi — non scrivi da zero ogni volta.</p>
-        <ul class="agent-list">
-          <li>Pesca e adatta i tuoi template storici</li>
-          <li>Riempie automaticamente con i dati del cliente</li>
-          <li>Output in Word o Google Doc, pronto da revisionare</li>
-        </ul>
+      <div class="agent-row fu">
+        <div class="ar-left">
+          <div class="ar-idx">02</div>
+          <div class="ar-cat">Drafting</div>
+        </div>
+        <div class="ar-right">
+          <h3>Agente di redazione documenti</h3>
+          <p class="ar-desc">Genera bozze di atti, comunicazioni, relazioni e lettere usando i tuoi template storici e il tuo tono. Tu editi e approvi — non scrivi da zero ogni volta.</p>
+          <ul class="ar-bullets">
+            <li>Pesca e adatta i tuoi template storici</li>
+            <li>Riempie automaticamente con i dati del cliente</li>
+            <li>Output in Word o Google Doc, pronto da revisionare</li>
+          </ul>
+        </div>
       </div>
-      <div class="agent-card fu">
-        <div class="agent-num">// 03 — SCADENZE E FOLLOW-UP</div>
-        <h3>Agente di gestione relazioni</h3>
-        <p class="agent-desc">Mantiene le relazioni vive con clienti e lead. Promemoria scadenze, richieste documenti ricorrenti, check-in mensili — al posto tuo, nel tuo nome, con il tuo tono.</p>
-        <ul class="agent-list">
-          <li>Sequence automatiche su email e WhatsApp</li>
-          <li>Personalizzazione basata sullo storico cliente</li>
-          <li>Alert immediato quando serve intervento umano</li>
-        </ul>
+      <div class="agent-row fu">
+        <div class="ar-left">
+          <div class="ar-idx">03</div>
+          <div class="ar-cat">Scadenze</div>
+        </div>
+        <div class="ar-right">
+          <h3>Agente di gestione relazioni</h3>
+          <p class="ar-desc">Mantiene le relazioni vive con clienti e lead. Promemoria scadenze, richieste documenti ricorrenti, check-in mensili — al posto tuo, nel tuo nome, con il tuo tono.</p>
+          <ul class="ar-bullets">
+            <li>Sequence automatiche su email e WhatsApp</li>
+            <li>Personalizzazione basata sullo storico cliente</li>
+            <li>Alert immediato quando serve intervento umano</li>
+          </ul>
+        </div>
       </div>
-      <div class="agent-card fu">
-        <div class="agent-num">// 04 — RICERCA E REPORTING</div>
-        <h3>Agente di analisi e normativa</h3>
-        <p class="agent-desc">Fa ricerca normativa, analizza documenti, produce report mensili per i clienti. Tu dedichi le ore alle decisioni, non alla raccolta e sintesi di dati.</p>
-        <ul class="agent-list">
-          <li>Ricerca INPS, circolari, sentenze, normativa fiscale</li>
-          <li>Report mensili automatici per cliente</li>
-          <li>Sintesi su richiesta in linguaggio naturale</li>
-        </ul>
+      <div class="agent-row fu">
+        <div class="ar-left">
+          <div class="ar-idx">04</div>
+          <div class="ar-cat">Normativa</div>
+        </div>
+        <div class="ar-right">
+          <h3>Agente di analisi e normativa</h3>
+          <p class="ar-desc">Fa ricerca normativa, analizza documenti, produce report mensili per i clienti. Tu dedichi le ore alle decisioni, non alla raccolta e sintesi di dati.</p>
+          <ul class="ar-bullets">
+            <li>Ricerca INPS, circolari, sentenze, normativa fiscale</li>
+            <li>Report mensili automatici per cliente</li>
+            <li>Sintesi su richiesta in linguaggio naturale</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
