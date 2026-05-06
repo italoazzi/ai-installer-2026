@@ -462,6 +462,30 @@
     /* DIVIDER */
     .div-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(85,112,255,.22), transparent); }
 
+    /* FILE UPLOAD */
+    .upload-area {
+      border: 1.5px dashed var(--bd-soft); border-radius: 12px;
+      padding: 28px 20px; text-align: center; cursor: pointer;
+      transition: border-color .2s, background .2s;
+      background: var(--bg3);
+    }
+    .upload-area:hover, .upload-area.drag {
+      border-color: rgba(85,112,255,.38); background: rgba(85,112,255,.04);
+    }
+    .upload-inner { pointer-events: none; }
+    .upload-icon { font-size: 26px; margin-bottom: 8px; }
+    .upload-text { font-size: 14px; color: var(--text-d); }
+    .upload-browse { color: var(--blue-lt); text-decoration: underline; }
+    .upload-sub { font-size: 12px; color: var(--text-m); margin-top: 5px; }
+    .upload-preview { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+    .upload-file {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--bg3); border: 1px solid var(--bd-soft); border-radius: 8px;
+      padding: 5px 11px; font-size: 12px; color: var(--text-d);
+    }
+    .uf-rm { cursor: pointer; color: var(--text-m); margin-left: 3px; transition: color .15s; }
+    .uf-rm:hover { color: var(--red); }
+
     /* UTILITIES */
     .cy { color: var(--cyan); font-style: normal; }
     .hero-nums { gap: 0; }
@@ -795,7 +819,7 @@
       <div class="form-head fu">
         <p class="lbl">Consulenza gratuita</p>
         <h2 class="d">Dicci come lavori.<br>Ti rispondiamo entro 24 ore.</h2>
-        <p>Non serve preparare nulla. Descrivi il tuo studio in 5 minuti — poi leggiamo tutto e ti mandiamo un'analisi concreta sul tuo caso specifico.</p>
+        <p>Non serve preparare nulla. Più ci dici del tuo studio e dei tuoi processi reali, più la nostra analisi sarà concreta e utile per te.</p>
       </div>
 
       <div class="prog">
@@ -805,14 +829,13 @@
 
       <form id="consultForm" novalidate>
 
-        <!-- BLOCK 1 — Chi sei -->
+        <!-- BLOCCO 1 — Il tuo studio -->
         <div class="fb fu">
           <div class="fb-head">
             <div class="fb-icon">🏢</div>
-            <div class="fb-title">Chi sei</div>
+            <div class="fb-title">Il tuo studio</div>
           </div>
-          <p class="fb-sub">Le informazioni base su di te e sul tuo studio.</p>
-
+          <p class="fb-sub">Chi sei e che volumi gestisce il tuo studio.</p>
           <div class="frow">
             <div class="f">
               <label for="nome">Nome e cognome <span class="req">*</span></label>
@@ -821,6 +844,16 @@
             <div class="f">
               <label for="studio">Nome dello studio</label>
               <input type="text" id="studio" placeholder="Studio Rossi & Associati" />
+            </div>
+          </div>
+          <div class="frow">
+            <div class="f">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="nome@studio.it" autocomplete="email" required />
+            </div>
+            <div class="f">
+              <label for="telefono">Telefono</label>
+              <input type="tel" id="telefono" placeholder="+39 333 000 0000" autocomplete="tel" />
             </div>
           </div>
           <div class="frow">
@@ -837,94 +870,19 @@
               </select>
             </div>
             <div class="f">
-              <label for="struttura">Struttura</label>
-              <select id="struttura">
+              <label for="team">Persone nel team</label>
+              <select id="team">
                 <option value="">Seleziona...</option>
                 <option>Solo (solopreneur)</option>
-                <option>Studio associato 2–5 persone</option>
-                <option>Studio strutturato 6+ persone</option>
+                <option>2–3 persone</option>
+                <option>4–10 persone</option>
+                <option>Più di 10</option>
               </select>
             </div>
           </div>
           <div class="frow">
             <div class="f">
-              <label for="email">Email <span class="req">*</span></label>
-              <input type="email" id="email" placeholder="nome@studio.it" autocomplete="email" required />
-            </div>
-            <div class="f">
-              <label for="telefono">Telefono</label>
-              <input type="tel" id="telefono" placeholder="+39 333 000 0000" autocomplete="tel" />
-            </div>
-          </div>
-        </div>
-
-        <!-- BLOCK 2 — Come lavori -->
-        <div class="fb fu">
-          <div class="fb-head">
-            <div class="fb-icon">⚙️</div>
-            <div class="fb-title">Come lavori</div>
-          </div>
-          <p class="fb-sub">I tuoi strumenti e dove perdi più tempo — questa è la parte che leggiamo con più attenzione.</p>
-
-          <div class="frow">
-            <div class="f">
-              <label for="gestionale">Gestionale / software principale</label>
-              <input type="text" id="gestionale" placeholder="Zucchetti, TeamSystem, Profis, Excel..." />
-            </div>
-            <div class="f">
-              <label for="comunicazione">Comunicazione con i clienti</label>
-              <select id="comunicazione">
-                <option value="">Seleziona...</option>
-                <option>Email</option>
-                <option>WhatsApp</option>
-                <option>Telefono prevalentemente</option>
-                <option>Mix email + WhatsApp</option>
-                <option>Portale dedicato</option>
-              </select>
-            </div>
-          </div>
-          <div class="f">
-            <label>Dove perdi più tempo (seleziona tutto quello che si applica)</label>
-            <div class="chk-group">
-              <label class="chk"><input type="checkbox" name="pain" value="Email ricorrenti ai clienti (richiesta documenti, scadenze, aggiornamenti)" /><span>Email ricorrenti ai clienti — richiesta documenti, scadenze, aggiornamenti</span></label>
-              <label class="chk"><input type="checkbox" name="pain" value="Redazione documenti ricorrenti (comunicazioni, relazioni, lettere standard)" /><span>Redazione documenti ricorrenti — comunicazioni, relazioni, lettere standard</span></label>
-              <label class="chk"><input type="checkbox" name="pain" value="Ricerca normativa (INPS, circolari, aggiornamenti fiscali, sentenze)" /><span>Ricerca normativa — INPS, circolari, aggiornamenti fiscali, sentenze</span></label>
-              <label class="chk"><input type="checkbox" name="pain" value="Inserimento dati tra sistemi diversi (copia-incolla, doppio inserimento)" /><span>Inserimento dati tra sistemi — copia-incolla, doppio inserimento</span></label>
-              <label class="chk"><input type="checkbox" name="pain" value="Gestione scadenze e promemoria ai clienti" /><span>Gestione scadenze e promemoria ai clienti</span></label>
-              <label class="chk"><input type="checkbox" name="pain" value="Risposta a domande ripetitive dei clienti" /><span>Risposta a domande ripetitive dei clienti</span></label>
-            </div>
-          </div>
-          <div class="f" style="margin-top:14px;">
-            <label for="pain_desc">Descrivi il caso concreto che ti pesa di più <span class="req">*</span></label>
-            <textarea id="pain_desc" style="min-height:108px;" placeholder='Es. "Ogni aprile scrivo 15–20 email quasi identiche per richiedere documenti ai clienti. Cambio solo il nome, ma devo farlo a mano ogni volta. Mi prende mezza mattina."' required></textarea>
-          </div>
-        </div>
-
-        <!-- BLOCK 3 — Cosa vuoi -->
-        <div class="fb fu">
-          <div class="fb-head">
-            <div class="fb-icon">🎯</div>
-            <div class="fb-title">Cosa vuoi ottenere</div>
-          </div>
-          <p class="fb-sub">L'obiettivo finale — anche libero, non serve essere precisi.</p>
-
-          <div class="f">
-            <label for="obiettivo">Se potessi eliminare una cosa dalla tua settimana, quale sarebbe?</label>
-            <textarea id="obiettivo" placeholder="Scrivi liberamente — non c'è risposta giusta o sbagliata..."></textarea>
-          </div>
-          <div class="frow">
-            <div class="f">
-              <label for="ai_exp">Hai già usato strumenti AI?</label>
-              <select id="ai_exp">
-                <option value="">Seleziona...</option>
-                <option>Sì, regolarmente (ChatGPT, Copilot, ecc.)</option>
-                <option>Sì, ma in modo non strutturato</option>
-                <option>Ho provato, non mi hanno convinto</option>
-                <option>No, mai</option>
-              </select>
-            </div>
-            <div class="f">
-              <label for="clienti_n">Clienti attivi (indicativo)</label>
+              <label for="clienti_n">Clienti / aziende gestite</label>
               <select id="clienti_n">
                 <option value="">Seleziona...</option>
                 <option>Meno di 30</option>
@@ -933,6 +891,180 @@
                 <option>Più di 200</option>
               </select>
             </div>
+            <div class="f">
+              <label for="gestionale">Software gestionale principale</label>
+              <input type="text" id="gestionale" placeholder="Zucchetti, TeamSystem, Profis, Excel..." />
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCCO 2 — Il processo -->
+        <div class="fb fu">
+          <div class="fb-head">
+            <div class="fb-icon">⚙️</div>
+            <div class="fb-title">Il processo che costa di più</div>
+          </div>
+          <p class="fb-sub">Scegli un processo specifico. Vogliamo capire esattamente come funziona oggi — non in teoria, non nelle intenzioni.</p>
+          <div class="f">
+            <label for="processo_tipo">Quale processo vuoi affrontare per primo? <span class="req">*</span></label>
+            <select id="processo_tipo" required>
+              <option value="">Seleziona...</option>
+              <option>Onboarding nuovo cliente / azienda</option>
+              <option>Elaborazione buste paga</option>
+              <option>Dichiarazioni e adempimenti fiscali</option>
+              <option>Comunicazioni INPS / enti previdenziali</option>
+              <option>Redazione documenti e lettere</option>
+              <option>Gestione scadenze e promemoria clienti</option>
+              <option>Ricerca normativa e aggiornamenti</option>
+              <option>Fatturazione e contabilità</option>
+              <option>Altro (specifica sotto)</option>
+            </select>
+          </div>
+          <div class="f">
+            <label for="processo_desc">Descrivi passo per passo cosa succede oggi, dall'inizio alla fine <span class="req">*</span></label>
+            <textarea id="processo_desc" style="min-height:148px;" placeholder="Sii specifico — ogni dettaglio conta. Es: «Quando un'azienda ci contatta per la prima volta: 1) il titolare scrive su WhatsApp, 2) gli mandiamo la lista documenti via email, 3) aspettiamo che li porti fisicamente, 4) inseriamo ogni dipendente in Zucchetti uno a uno, 5) creiamo la cartella Drive, 6) avvisiamo il collega...» — più descrivi, più precisa sarà la nostra proposta." required></textarea>
+          </div>
+          <div class="frow">
+            <div class="f">
+              <label for="processo_trigger">Come arriva la richiesta di solito?</label>
+              <select id="processo_trigger">
+                <option value="">Seleziona...</option>
+                <option>WhatsApp</option>
+                <option>Email</option>
+                <option>Telefono</option>
+                <option>Portale clienti</option>
+                <option>Fisicamente in studio</option>
+                <option>Mix di canali</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="processo_freq">Quante volte al mese si ripete?</label>
+              <select id="processo_freq">
+                <option value="">Seleziona...</option>
+                <option>Meno di 5 volte</option>
+                <option>5 – 20 volte</option>
+                <option>20 – 50 volte</option>
+                <option>Più di 50 volte</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div class="f">
+              <label for="processo_ore">Ore totali che ci passate al mese (stima)</label>
+              <select id="processo_ore">
+                <option value="">Seleziona...</option>
+                <option>Meno di 5 ore</option>
+                <option>5 – 15 ore</option>
+                <option>15 – 40 ore</option>
+                <option>Più di 40 ore</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="processo_chi">Chi lo esegue nel team?</label>
+              <input type="text" id="processo_chi" placeholder="Es. io e una praticante, solo io..." />
+            </div>
+          </div>
+          <div class="f">
+            <label for="processo_frustrazione">Quale parte specifica è più frustrante o ripetitiva?</label>
+            <textarea id="processo_frustrazione" style="min-height:80px;" placeholder='Es. "Copiare gli stessi dati da Excel a Zucchetti per 40 dipendenti ogni mese" oppure "Mandare la stessa email di richiesta documenti a 60 clienti cambiando solo il nome"'></textarea>
+          </div>
+        </div>
+
+        <!-- BLOCCO 3 — Stack strumenti -->
+        <div class="fb fu">
+          <div class="fb-head">
+            <div class="fb-icon">🔧</div>
+            <div class="fb-title">I tuoi strumenti</div>
+          </div>
+          <p class="fb-sub">Tutto quello che usi oggi — email, gestionale, WhatsApp, Drive, portali, firma digitale. Anche se ti sembra ovvio.</p>
+          <div class="f">
+            <label for="stack_completo">Elenca tutti gli strumenti che usi nello studio <span class="req">*</span></label>
+            <textarea id="stack_completo" style="min-height:80px;" placeholder="Es. Gmail, Zucchetti Paghe Infinity, Google Drive, WhatsApp Business, Infocert (firma digitale), Entratel, portale INPS, CRM, Notion, Excel..." required></textarea>
+          </div>
+          <div class="f">
+            <label for="stack_integrazione">Questi strumenti si parlano tra loro, o copiate i dati a mano?</label>
+            <select id="stack_integrazione">
+              <option value="">Seleziona...</option>
+              <option>Tutto a mano — nessuna integrazione</option>
+              <option>Qualcosa è già integrato, ma poco</option>
+              <option>Mix — alcune cose automatiche, molte ancora manuali</option>
+              <option>Abbastanza integrato, ma con buchi specifici</option>
+            </select>
+          </div>
+          <div class="f">
+            <label for="stack_archivio">Dove vivono i documenti e la storia di ogni cliente?</label>
+            <input type="text" id="stack_archivio" placeholder="Es. Cartella Drive per cliente, Zucchetti per i dati fiscali, email per le comunicazioni..." />
+          </div>
+        </div>
+
+        <!-- BLOCCO 4 — Materiali -->
+        <div class="fb fu">
+          <div class="fb-head">
+            <div class="fb-icon">📎</div>
+            <div class="fb-title">Mostraci come lavori</div>
+          </div>
+          <p class="fb-sub">Uno screenshot del gestionale o un'email tipo vale più di mille parole. Non è obbligatorio, ma ci aiuta enormemente a costruire qualcosa di preciso per te.</p>
+          <div class="f">
+            <label>Screenshot, template, email tipo, qualsiasi documento utile</label>
+            <div class="upload-area" id="uploadArea">
+              <div class="upload-inner">
+                <div class="upload-icon">📁</div>
+                <div class="upload-text">Trascina i file qui o <span class="upload-browse">clicca per sfogliare</span></div>
+                <div class="upload-sub">Immagini e PDF · Max 3 file · 2 MB ciascuno</div>
+              </div>
+              <input type="file" id="fileInput" multiple accept="image/*,.pdf" style="display:none" />
+            </div>
+            <div class="upload-preview" id="uploadPreview"></div>
+          </div>
+          <div class="f" style="margin-top:14px;">
+            <label for="link_materiali">Oppure condividi un link (Google Drive, Notion, Dropbox...)</label>
+            <input type="url" id="link_materiali" placeholder="https://drive.google.com/..." />
+          </div>
+        </div>
+
+        <!-- BLOCCO 5 — Obiettivo -->
+        <div class="fb fu">
+          <div class="fb-head">
+            <div class="fb-icon">🎯</div>
+            <div class="fb-title">Obiettivo</div>
+          </div>
+          <p class="fb-sub">Cosa vuoi ottenere davvero — e quando.</p>
+          <div class="f">
+            <label for="obiettivo">Se questo processo fosse automatizzato al 90%, cosa cambia concretamente nella tua settimana?</label>
+            <textarea id="obiettivo" style="min-height:80px;" placeholder="Es. «Libererei 2 ore al giorno che ora passo a copiare dati. Potrei finalmente dedicarmi a nuove aziende invece di stare dietro alla burocrazia...»"></textarea>
+          </div>
+          <div class="frow">
+            <div class="f">
+              <label for="urgenza">Quando vorresti avere il sistema live?</label>
+              <select id="urgenza">
+                <option value="">Seleziona...</option>
+                <option>Prima possibile (entro 2 settimane)</option>
+                <option>Entro un mese</option>
+                <option>Entro 2–3 mesi</option>
+                <option>Non ho fretta — voglio farlo bene</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="budget">Budget indicativo</label>
+              <select id="budget">
+                <option value="">Seleziona...</option>
+                <option>Da definire insieme dopo la call</option>
+                <option>Fino a €2.000</option>
+                <option>€2.000 – €5.000</option>
+                <option>€5.000 – €15.000</option>
+                <option>Oltre €15.000</option>
+              </select>
+            </div>
+          </div>
+          <div class="f">
+            <label for="ai_exp">Hai già usato strumenti AI nel tuo studio?</label>
+            <select id="ai_exp">
+              <option value="">Seleziona...</option>
+              <option>Sì, regolarmente (ChatGPT, Copilot...)</option>
+              <option>Sì, ma non strutturato</option>
+              <option>Ho provato, non mi hanno convinto</option>
+              <option>No, mai</option>
+            </select>
           </div>
         </div>
 
@@ -1051,14 +1183,13 @@
   document.querySelectorAll('.fu').forEach(el => io.observe(el));
 
   // Progress bar
-  function updateProgress () {
+  function updateProgress() {
     const blocks = document.querySelectorAll('.fb');
     let filled = 0;
     blocks.forEach(b => {
-      const hasVal = [...b.querySelectorAll('input:not([type=checkbox]),select,textarea')]
+      const hasVal = [...b.querySelectorAll('input:not([type=file]),select,textarea')]
         .some(el => el.value.trim());
-      const hasChk = b.querySelector('input[type=checkbox]:checked');
-      if (hasVal || hasChk) filled++;
+      if (hasVal) filled++;
     });
     const pct = Math.round(filled / blocks.length * 100);
     document.getElementById('progFill').style.width = pct + '%';
@@ -1069,76 +1200,133 @@
     el.addEventListener('change', updateProgress);
   });
 
+  // File upload
+  const uploadArea = document.getElementById('uploadArea');
+  const fileInput  = document.getElementById('fileInput');
+  const preview    = document.getElementById('uploadPreview');
+  let attachedFiles = [];
+
+  uploadArea.addEventListener('click', () => fileInput.click());
+  uploadArea.addEventListener('dragover', e => { e.preventDefault(); uploadArea.classList.add('drag'); });
+  uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('drag'));
+  uploadArea.addEventListener('drop', e => { e.preventDefault(); uploadArea.classList.remove('drag'); handleFiles([...e.dataTransfer.files]); });
+  fileInput.addEventListener('change', () => { handleFiles([...fileInput.files]); fileInput.value = ''; });
+
+  function handleFiles(files) {
+    files.forEach(file => {
+      if (attachedFiles.length >= 3) return;
+      if (file.size > 2 * 1024 * 1024) {
+        alert('"' + file.name + '" supera 2 MB. Usa il campo Link Drive qui sotto per file grandi.');
+        return;
+      }
+      attachedFiles.push(file);
+    });
+    renderPreview();
+    updateProgress();
+  }
+
+  function renderPreview() {
+    preview.innerHTML = '';
+    attachedFiles.forEach((f, i) => {
+      const d = document.createElement('div');
+      d.className = 'upload-file';
+      d.innerHTML = '📄 ' + f.name + ' <span class="uf-rm" data-i="' + i + '">✕</span>';
+      preview.appendChild(d);
+    });
+    preview.querySelectorAll('.uf-rm').forEach(btn => {
+      btn.addEventListener('click', e => { e.stopPropagation(); attachedFiles.splice(+btn.dataset.i, 1); renderPreview(); updateProgress(); });
+    });
+  }
+
+  function readFileAsBase64(file) {
+    return new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = () => resolve({ name: file.name, type: file.type, data: reader.result });
+      reader.readAsDataURL(file);
+    });
+  }
+
   // Form submit
   document.getElementById('consultForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     const errEl = document.getElementById('formErr');
     const btn   = document.getElementById('submitBtn');
 
-    const nome     = document.getElementById('nome').value.trim();
-    const email    = document.getElementById('email').value.trim();
-    const prof     = document.getElementById('professione').value;
-    const painDesc = document.getElementById('pain_desc').value.trim();
+    const nome         = document.getElementById('nome').value.trim();
+    const email        = document.getElementById('email').value.trim();
+    const prof         = document.getElementById('professione').value;
+    const processoTipo = document.getElementById('processo_tipo').value;
+    const processoDesc = document.getElementById('processo_desc').value.trim();
+    const stackComp    = document.getElementById('stack_completo').value.trim();
 
     errEl.textContent = '';
-    if (!nome)  { errEl.textContent = 'Inserisci il tuo nome.'; return; }
-    if (!prof)  { errEl.textContent = 'Seleziona la tua professione.'; return; }
+    if (!nome)         { errEl.textContent = 'Inserisci il tuo nome.'; return; }
+    if (!prof)         { errEl.textContent = 'Seleziona la tua professione.'; return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = 'Email non valida.'; return; }
-    if (!painDesc) { errEl.textContent = 'Descrivi il caso che ti pesa di più (blocco 2).'; return; }
+    if (!processoTipo) { errEl.textContent = 'Seleziona il processo principale (blocco 2).'; return; }
+    if (!processoDesc) { errEl.textContent = 'Descrivi il processo passo per passo (blocco 2).'; return; }
+    if (!stackComp)    { errEl.textContent = 'Elenca i tuoi strumenti (blocco 3).'; return; }
 
     btn.disabled = true;
     btn.innerHTML = 'Invio in corso... <span class="b-arr">→</span>';
 
-    const v    = id => { const el = document.getElementById(id); return el?.value?.trim() || '—'; };
-    const cut  = s => s.length > 800 ? s.slice(0, 800) + '…' : s;
-    const pains = [...document.querySelectorAll('input[name=pain]:checked')].map(c => '• ' + c.value).join('\n');
+    const v   = id => document.getElementById(id)?.value?.trim() || '—';
+    const cut = s => s.length > 600 ? s.slice(0, 600) + '…' : s;
+
+    const fileData = await Promise.all(attachedFiles.map(readFileAsBase64));
 
     const payload = {
-      nome, email,
-      professione: prof,
-      studio: v('studio'),
-      struttura:   v('struttura'),
-      telefono:    v('telefono'),
-      gestionale:  v('gestionale'),
-      comunicazione: v('comunicazione'),
-      pain_punti:  pains,
-      pain_desc:   painDesc,
-      obiettivo:   v('obiettivo'),
-      ai_exp:      v('ai_exp'),
-      clienti_n:   v('clienti_n'),
+      nome, email, professione: prof,
+      studio: v('studio'), telefono: v('telefono'),
+      team: v('team'), clienti_n: v('clienti_n'), gestionale: v('gestionale'),
+      processo_tipo: processoTipo, processo_desc: processoDesc,
+      processo_trigger: v('processo_trigger'), processo_freq: v('processo_freq'),
+      processo_ore: v('processo_ore'), processo_chi: v('processo_chi'),
+      processo_frustrazione: v('processo_frustrazione'),
+      stack_completo: stackComp, stack_integrazione: v('stack_integrazione'),
+      stack_archivio: v('stack_archivio'),
+      allegati_n: fileData.length, allegati: fileData,
+      link_materiali: v('link_materiali'),
+      obiettivo: v('obiettivo'), urgenza: v('urgenza'),
+      budget: v('budget'), ai_exp: v('ai_exp'),
       source: 'landing-ai-installer'
     };
 
-    // localStorage first — never fails
     try {
-      localStorage.setItem('ai_installer_lead_' + Date.now(), JSON.stringify({ ...payload, ts: new Date().toISOString() }));
+      const light = { ...payload, allegati: fileData.map(f => ({ name: f.name })), ts: new Date().toISOString() };
+      localStorage.setItem('ai_installer_lead_' + Date.now(), JSON.stringify(light));
     } catch (_) {}
 
     const tgMsg = [
-      `📋 <b>NUOVA CONSULENZA — AI Installer</b>`, '',
-      `<b>👤 CHI È</b>`,
-      `Nome: ${nome}`, `Professione: ${prof}`, `Studio: ${v('studio')}`,
-      `Struttura: ${v('struttura')}`, `Email: ${email}`, `Tel: ${v('telefono')}`, `Clienti: ${v('clienti_n')}`, '',
-      `<b>⚙️ COME LAVORA</b>`,
-      `Gestionale: ${v('gestionale')}`, `Comunicazione: ${v('comunicazione')}`,
-      `Pain punti:\n${pains || '(nessuna checkbox)'}`, '',
-      `Caso principale:\n${cut(painDesc)}`, '',
-      `<b>🎯 OBIETTIVO</b>`,
-      `${cut(v('obiettivo'))}`, '',
-      `AI exp: ${v('ai_exp')}`,
+      '📋 <b>NUOVA CONSULENZA — AI Installer</b>', '',
+      '<b>👤 CHI È</b>',
+      nome + ' · ' + prof,
+      'Studio: ' + v('studio') + ' · Team: ' + v('team'),
+      'Email: ' + email + ' · Tel: ' + v('telefono'),
+      'Clienti: ' + v('clienti_n') + ' · Gestionale: ' + v('gestionale'), '',
+      '<b>⚙️ PROCESSO</b>',
+      'Tipo: ' + processoTipo,
+      'Frequenza: ' + v('processo_freq') + ' · Ore/mese: ' + v('processo_ore'),
+      'Trigger: ' + v('processo_trigger') + ' · Chi: ' + v('processo_chi'),
+      'Passo per passo:\n' + cut(processoDesc), '',
+      'Parte frustrante:\n' + cut(v('processo_frustrazione')), '',
+      '<b>🔧 STACK</b>',
+      cut(stackComp),
+      'Integrazione: ' + v('stack_integrazione'),
+      'Archivio: ' + v('stack_archivio'), '',
+      '<b>🎯 OBIETTIVO</b>',
+      cut(v('obiettivo')),
+      'Urgenza: ' + v('urgenza') + ' · Budget: ' + v('budget'),
+      'AI exp: ' + v('ai_exp'),
+      'Allegati: ' + (fileData.length > 0 ? fileData.map(f => f.name).join(', ') : 'nessuno'),
+      'Link: ' + v('link_materiali'),
     ].join('\n');
 
-    // Railway + Telegram in parallel, non-blocking
     Promise.allSettled([
-      fetch(WEBHOOK, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }),
+      fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
       tg(tgMsg)
     ]);
 
-    // Always show success — data is already in localStorage, backend runs in background
     document.getElementById('consultForm').style.display = 'none';
     const s = document.getElementById('formSuccess');
     s.classList.add('show');
