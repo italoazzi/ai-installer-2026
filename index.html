@@ -215,7 +215,7 @@
     .sec-head p { font-size: clamp(15px, 1.4vw, 17px); color: var(--text-d); line-height: 1.75; }
 
     /* PAIN */
-    .pain { background: var(--bg); }
+    .pain { background: #06101f; }
     .pain-list { margin-top: 60px; }
     .pain-item {
       display: grid; grid-template-columns: 100px 1fr; gap: 40px;
@@ -236,7 +236,16 @@
     }
 
     /* INSTALL */
-    .install { background: var(--bg2); }
+    .install { background: var(--bg); position: relative; overflow: hidden; }
+    .install::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px; height: 700px;
+      background: radial-gradient(ellipse at center, rgba(85,112,255,.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 0;
+    }
+    .install .wrap { position: relative; z-index: 1; }
     .agent-rows { margin-top: 60px; }
     .agent-row {
       display: grid; grid-template-columns: 180px 1fr; gap: 56px;
@@ -262,7 +271,7 @@
     }
 
     /* PROCESS */
-    .process { background: var(--bg); }
+    .process { background: #06101f; }
     .proc-steps { margin-top: 52px; }
     .proc-step {
       display: grid; grid-template-columns: 84px 1fr; gap: 28px;
@@ -274,7 +283,7 @@
     .step-body p { font-size: 15px; color: var(--text-d); line-height: 1.7; }
 
     /* FAQ */
-    .faq { background: var(--bg2); }
+    .faq { background: var(--bg); }
     .faq-list { max-width: 740px; margin: 52px auto 0; }
     .faq-item { border-bottom: 1px solid var(--bd); }
     .faq-btn {
@@ -295,7 +304,7 @@
     .faq-body p { padding-bottom: 20px; font-size: 15px; color: var(--text-d); line-height: 1.75; }
 
     /* FORM */
-    .form-sec { background: var(--bg); }
+    .form-sec { background: #06101f; }
     .form-wrap { max-width: 700px; margin: 0 auto; }
     .form-head { text-align: center; margin-bottom: 52px; }
     .form-head .lbl { margin-bottom: 14px; }
@@ -435,7 +444,7 @@
     .fu.in { opacity: 1; transform: none; }
 
     /* DIVIDER */
-    .div-line { height: 1px; background: linear-gradient(90deg, transparent, var(--bd-soft), transparent); }
+    .div-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(85,112,255,.22), transparent); }
   </style>
 </head>
 <body>
@@ -549,6 +558,8 @@
   </div>
 </section>
 
+<div class="div-line"></div>
+
 <!-- WHAT WE INSTALL -->
 <section class="install" id="cosa">
   <div class="wrap">
@@ -622,6 +633,8 @@
   </div>
 </section>
 
+<div class="div-line"></div>
+
 <!-- PROCESS -->
 <section class="process" id="processo">
   <div class="wrap">
@@ -662,6 +675,8 @@
     </div>
   </div>
 </section>
+
+<div class="div-line"></div>
 
 <!-- FAQ -->
 <section class="faq" id="faq">
@@ -735,6 +750,8 @@
     </div>
   </div>
 </section>
+
+<div class="div-line"></div>
 
 <!-- FORM -->
 <section class="form-sec" id="contatto">
