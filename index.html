@@ -180,7 +180,7 @@
       font-size: 30px; font-weight: 900; letter-spacing: -.04em;
       color: var(--text); line-height: 1;
     }
-    .hero-num-lbl { font-size: 13px; color: var(--text-m); margin-top: 4px; }
+    .hero-num-lbl { font-size: 13px; color: var(--text-d); margin-top: 4px; }
 
     /* terminal */
     .hero-term {
@@ -226,7 +226,7 @@
     .pain-n {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 68px; font-weight: 900; letter-spacing: -.04em; line-height: 1;
-      color: rgba(85,112,255,.13); padding-top: 3px;
+      color: rgba(85,112,255,.20); padding-top: 3px;
     }
     .pain-item h3 { font-size: 22px; margin-bottom: 11px; }
     .pain-item p { font-size: 15px; color: var(--text-d); line-height: 1.75; max-width: 580px; }
@@ -241,8 +241,8 @@
       content: '';
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 900px; height: 700px;
-      background: radial-gradient(ellipse at center, rgba(85,112,255,.08) 0%, transparent 60%);
+      width: 1100px; height: 900px;
+      background: radial-gradient(ellipse at center, rgba(85,112,255,.16) 0%, transparent 62%);
       pointer-events: none; z-index: 0;
     }
     .install .wrap { position: relative; z-index: 1; }
@@ -257,7 +257,7 @@
     .ar-idx {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 52px; font-weight: 900; letter-spacing: -.04em; line-height: 1;
-      color: rgba(85,112,255,.1); margin-bottom: 8px;
+      color: rgba(85,112,255,.16); margin-bottom: 8px;
     }
     .ar-cat { font-size: 11px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--blue); }
     .ar-right h3 { font-size: 22px; margin-bottom: 10px; }
@@ -272,19 +272,35 @@
 
     /* PROCESS */
     .process { background: #06101f; }
-    .proc-steps { margin-top: 52px; }
+    .proc-steps { margin-top: 60px; }
     .proc-step {
-      display: grid; grid-template-columns: 84px 1fr; gap: 28px;
-      padding: 28px 0; border-bottom: 1px solid var(--bd); align-items: start;
+      display: grid; grid-template-columns: 140px 1fr; gap: 52px;
+      padding: 44px 0; border-bottom: 1px solid var(--bd); align-items: start;
     }
-    .proc-step:last-child { border-bottom: none; }
-    .step-day { font-size: 11px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--blue); padding-top: 5px; }
-    .step-body h3 { margin-bottom: 8px; }
+    .proc-step:first-child { padding-top: 0; }
+    .proc-step:last-child { border-bottom: none; padding-bottom: 0; }
+    .step-left { padding-top: 4px; }
+    .step-n {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 52px; font-weight: 900; letter-spacing: -.04em; line-height: 1;
+      color: rgba(85,112,255,.12); margin-bottom: 10px;
+    }
+    .step-day {
+      font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--blue);
+      background: rgba(85,112,255,.08); border: 1px solid rgba(85,112,255,.18);
+      border-radius: 6px; padding: 4px 10px; display: inline-block;
+    }
+    .step-body h3 { margin-bottom: 10px; }
     .step-body p { font-size: 15px; color: var(--text-d); line-height: 1.7; }
+    @media (max-width: 640px) {
+      .proc-step { grid-template-columns: 1fr; gap: 14px; padding: 32px 0; }
+      .step-n { font-size: 38px; }
+    }
 
     /* FAQ */
     .faq { background: var(--bg); }
-    .faq-list { max-width: 740px; margin: 52px auto 0; }
+    .faq-list { max-width: 740px; margin: 44px auto 0; }
     .faq-item { border-bottom: 1px solid var(--bd); }
     .faq-btn {
       width: 100%; text-align: left; padding: 20px 0;
@@ -445,6 +461,12 @@
 
     /* DIVIDER */
     .div-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(85,112,255,.22), transparent); }
+
+    /* UTILITIES */
+    .cy { color: var(--cyan); font-style: normal; }
+    .hero-nums { gap: 0; }
+    .hero-nums > div { padding: 0 28px; border-left: 1px solid var(--bd-soft); }
+    .hero-nums > div:first-child { padding-left: 0; border-left: none; }
   </style>
 </head>
 <body>
@@ -640,33 +662,45 @@
   <div class="wrap">
     <div class="sec-head fu">
       <p class="lbl">Come lavoriamo</p>
-      <h2 class="d">Dal primo contatto al go-live: 14 giorni.</h2>
+      <h2 class="d">Dal primo contatto al go-live: <em class="cy">14 giorni</em>.</h2>
       <p>Niente sviluppo software a tempo indeterminato. Niente promesse vaghe. Un processo fisso, con date precise e una consegna reale.</p>
     </div>
     <div class="proc-steps">
       <div class="proc-step fu">
-        <div class="step-day">Giorno 1–2</div>
+        <div class="step-left">
+          <div class="step-n">01</div>
+          <div class="step-day">Giorno 1–2</div>
+        </div>
         <div class="step-body">
           <h3>Discovery call gratuita</h3>
           <p>30–45 minuti insieme. Mappiamo i tuoi 5–10 task ripetitivi più costosi, identifichiamo dove l'AI ha senso — e dove no, te lo diciamo chiaramente. Esci con un piano scritto e una stima d'impatto reale.</p>
         </div>
       </div>
       <div class="proc-step fu">
-        <div class="step-day">Giorno 3–7</div>
+        <div class="step-left">
+          <div class="step-n">02</div>
+          <div class="step-day">Giorno 3–7</div>
+        </div>
         <div class="step-body">
           <h3>Build sul tuo stack reale</h3>
           <p>Costruiamo gli agenti integrati con il tuo gestionale, Google Workspace, WhatsApp Business, il tuo CRM. Tu non fai nulla — ricevi aggiornamenti video brevi ogni 2 giorni per vedere lo stato di avanzamento.</p>
         </div>
       </div>
       <div class="proc-step fu">
-        <div class="step-day">Giorno 8–12</div>
+        <div class="step-left">
+          <div class="step-n">03</div>
+          <div class="step-day">Giorno 8–12</div>
+        </div>
         <div class="step-body">
           <h3>Test con casi reali del tuo studio</h3>
           <p>Provi gli agenti su 3–5 pratiche reali. Vedi cosa funziona e cosa va aggiustato. Le correzioni arrivano entro 48 ore. Niente ping-pong di email, niente "apriremo un ticket".</p>
         </div>
       </div>
       <div class="proc-step fu">
-        <div class="step-day">Giorno 13–14</div>
+        <div class="step-left">
+          <div class="step-n">04</div>
+          <div class="step-day">Giorno 13–14</div>
+        </div>
         <div class="step-body">
           <h3>Handoff + formazione team</h3>
           <p>Sessione finale con te e i tuoi collaboratori. Manuale operativo personalizzato, video tutorial dei flussi specifici del tuo studio. Supporto incluso nei 30 giorni successivi.</p>
@@ -681,9 +715,10 @@
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="wrap">
-    <div class="sec-head fu" style="max-width:100%; margin-bottom:0;">
+    <div class="sec-head fu" style="max-width:100%; margin-bottom:0; text-align:center;">
       <p class="lbl">Domande frequenti</p>
-      <h2 class="d">Quello che ci chiedono prima di iniziare.</h2>
+      <h2 class="d">Domande reali.<br>Risposte dirette.</h2>
+      <p style="margin-top:14px; max-width:520px; margin-left:auto; margin-right:auto;">Le sei obiezioni più comuni — e perché quasi tutte hanno una risposta concreta.</p>
     </div>
     <div class="faq-list">
 
