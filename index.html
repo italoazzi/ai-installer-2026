@@ -499,7 +499,48 @@
     .fu.in { opacity: 1; transform: none; }
 
     /* DIVIDER */
-    .div-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(85,112,255,.22), transparent); }
+    .div-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(85,112,255,.22), transparent);
+      transform-origin: center;
+      transform: scaleX(0);
+      transition: transform .9s ease;
+    }
+    .div-line.dl-in { transform: scaleX(1); }
+
+    /* STAGGER CASCADE */
+    .pain-item:nth-child(2)  { transition-delay: 90ms; }
+    .pain-item:nth-child(3)  { transition-delay: 180ms; }
+    .agent-row:nth-child(2)  { transition-delay: 100ms; }
+    .agent-row:nth-child(3)  { transition-delay: 200ms; }
+    .agent-row:nth-child(4)  { transition-delay: 300ms; }
+    .proc-step:nth-child(2)  { transition-delay: 100ms; }
+    .proc-step:nth-child(3)  { transition-delay: 200ms; }
+    .proc-step:nth-child(4)  { transition-delay: 300ms; }
+    .faq-item:nth-child(2)   { transition-delay: 60ms;  }
+    .faq-item:nth-child(3)   { transition-delay: 120ms; }
+    .faq-item:nth-child(4)   { transition-delay: 180ms; }
+    .faq-item:nth-child(5)   { transition-delay: 240ms; }
+    .faq-item:nth-child(6)   { transition-delay: 300ms; }
+
+    /* HERO EM GRADIENT SHIMMER */
+    @keyframes grad-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50%       { background-position: 100% 50%; }
+    }
+    .hero h1 em {
+      background: linear-gradient(125deg, var(--blue-lt) 0%, var(--cyan) 30%, #b0c4ff 60%, var(--cyan) 100%);
+      background-size: 220% 100%;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      animation: grad-shift 5s ease-in-out infinite;
+    }
+
+    /* HERO TAG DOT PULSE */
+    @keyframes dot-breathe {
+      0%, 100% { box-shadow: 0 0 6px var(--blue); opacity: 1; }
+      50%       { box-shadow: 0 0 14px var(--blue), 0 0 24px rgba(85,112,255,.3); opacity: .75; }
+    }
+    .hero-tag-dot { animation: dot-breathe 2.4s ease-in-out infinite; }
 
     /* FILE UPLOAD */
     .upload-area {
@@ -566,11 +607,11 @@
         </div>
         <div class="hero-nums">
           <div>
-            <div class="hero-num-val">14gg</div>
+            <div class="hero-num-val" data-count="14" data-suffix="gg">14gg</div>
             <div class="hero-num-lbl">dal primo contatto al go-live</div>
           </div>
           <div>
-            <div class="hero-num-val">9+</div>
+            <div class="hero-num-val" data-count="9" data-suffix="+">9+</div>
             <div class="hero-num-lbl">studi già automatizzati</div>
           </div>
           <div>
@@ -1368,6 +1409,38 @@
 </script>
 
 <script>
+/* Count-up hero numbers */
+(function () {
+  function countUp(el, target, suffix, dur) {
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('.hero-num-val[data-count]').forEach(function (el) {
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || '';
+    el.textContent = '0' + suffix;
+    var o = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { o.disconnect(); countUp(el, target, suffix, 1100); }
+    }, { threshold: 0.5 });
+    o.observe(el);
+  });
+
+  // Div-line draw
+  var dlObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('dl-in'); dlObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.div-line').forEach(function (el) { dlObs.observe(el); });
+})();
+
 /* Terminal typing animation */
 (function () {
   var el = document.getElementById('termBody');
