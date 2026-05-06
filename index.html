@@ -3,918 +3,579 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Installiamo agenti AI custom nella tua attività in 14 giorni. Per commercialisti, avvocati, immobiliaristi e PMI italiane. Setup hands-on, payment one-shot." />
-  <meta name="keywords" content="agenti AI, intelligenza artificiale imprese, automazione studio commercialista, AI avvocati, AI installazione, consulenza AI Italia" />
-  <meta name="author" content="AI Installer — Italo Azzi" />
-  <meta property="og:title" content="AI Installer — Installiamo intelligenza artificiale nelle PMI italiane" />
-  <meta property="og:description" content="Non vendiamo software. Installiamo agenti AI custom nella tua attività in 14 giorni." />
+  <meta name="description" content="Installiamo agenti AI su misura nella tua attività in 14 giorni. Per commercialisti, CDL, avvocati e PMI italiane. Consulenza gratuita, setup hands-on." />
+  <meta property="og:title" content="AI Installer — Sistema AI su misura per il tuo studio" />
+  <meta property="og:description" content="Non software. Non abbonamenti. Installiamo un sistema AI calibrato sulla tua operatività reale, in 14 giorni." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="it_IT" />
-  <title>AI Installer — Agenti AI custom per PMI e professionisti italiani</title>
+  <title>AI Installer — Sistema AI su misura per studi professionali e PMI</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800;12..96,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ============= RESET & BASE ============= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0a0a0a;
-      color: #ededed;
+      background: #030810;
+      color: #dce8ff;
+      font-family: 'Inter', system-ui, sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-    img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    button { font-family: inherit; cursor: pointer; border: none; }
-    .mono { font-family: 'JetBrains Mono', monospace; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    img { max-width: 100%; display: block; }
 
-    /* ============= TOKENS ============= */
     :root {
-      --bg: #0a0a0a;
-      --bg-2: #131313;
-      --bg-3: #1a1a1a;
-      --border: #262626;
-      --text: #ededed;
-      --text-dim: #a0a0a0;
-      --text-mute: #6b6b6b;
-      --accent: #b8ff3f;     /* verde lime AI */
-      --accent-dim: #8fcc2f;
-      --warn: #ff6b35;
-      --max-w: 1180px;
-      --pad-x: clamp(20px, 4vw, 40px);
+      --bg:      #030810;
+      --bg2:     #060d1c;
+      --bg3:     #091220;
+      --surface: #0b1428;
+      --bd:      rgba(255,255,255,.065);
+      --bd-soft: rgba(255,255,255,.11);
+      --bd-focus:rgba(85,112,255,.42);
+      --blue:    #5570ff;
+      --blue-lt: #7f96ff;
+      --cyan:    #00ccec;
+      --blue-glow: rgba(85,112,255,.14);
+      --text:    #dce8ff;
+      --text-d:  rgba(220,232,255,.55);
+      --text-m:  rgba(220,232,255,.28);
+      --red:     #ff5f5f;
+      --max:     1160px;
+      --px:      clamp(18px, 4.5vw, 44px);
     }
 
-    /* ============= LAYOUT ============= */
-    .container {
-      width: 100%;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding-left: var(--pad-x);
-      padding-right: var(--pad-x);
-    }
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--px); }
+    section { padding: clamp(72px, 10vh, 124px) 0; }
 
-    section { padding: clamp(60px, 10vh, 120px) 0; position: relative; }
+    .d  { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 900; letter-spacing: -.04em; line-height: 1.0; }
+    h1  { font-size: clamp(40px, 6.5vw, 78px); }
+    h2  { font-size: clamp(30px, 4vw, 52px); }
+    h3  { font-size: clamp(17px, 1.8vw, 22px); font-weight: 700; letter-spacing: -.02em; }
 
-    h1, h2, h3, h4 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
-    h1 { font-size: clamp(38px, 6.5vw, 78px); }
-    h2 { font-size: clamp(30px, 4.5vw, 52px); }
-    h3 { font-size: clamp(20px, 2.5vw, 28px); }
-
-    .eyebrow {
+    .lbl {
       display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 24px;
-      padding: 6px 14px;
-      border: 1px solid rgba(184, 255, 63, 0.3);
-      border-radius: 100px;
-      background: rgba(184, 255, 63, 0.05);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: .38em; text-transform: uppercase;
+      color: var(--text-m);
     }
 
-    /* ============= NAV ============= */
-    nav.top {
+    /* ambient glow */
+    body::before {
+      content: '';
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    nav.top .inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 17px;
-    }
-    .brand-mark {
-      width: 28px; height: 28px;
-      background: var(--accent);
-      border-radius: 6px;
-      display: grid; place-items: center;
-      color: #0a0a0a;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 800;
-      font-size: 14px;
-    }
-    nav.top ul {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    nav.top ul a {
-      font-size: 14px;
-      color: var(--text-dim);
-      transition: color 0.2s;
-    }
-    nav.top ul a:hover { color: var(--text); }
-    nav.top .cta-mini {
-      background: var(--accent);
-      color: #0a0a0a;
-      padding: 9px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: transform 0.15s;
-    }
-    nav.top .cta-mini:hover { transform: translateY(-1px); }
-    @media (max-width: 720px) {
-      nav.top ul { display: none; }
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 1100px; height: 680px;
+      pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse at 38% 40%, rgba(85,112,255,.1) 0%, transparent 55%),
+        radial-gradient(ellipse at 62% 60%, rgba(0,204,236,.06) 0%, transparent 55%);
+      filter: blur(70px);
     }
 
-    /* ============= HERO ============= */
-    .hero {
-      padding-top: 140px;
-      padding-bottom: 80px;
-      position: relative;
-      overflow: hidden;
+    /* NAV */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(3,8,16,.82);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--bd);
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -200px; left: 50%;
-      transform: translateX(-50%);
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(184, 255, 63, 0.08) 0%, transparent 60%);
-      pointer-events: none;
-      filter: blur(40px);
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 58px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 15px; letter-spacing: -.01em;
+    }
+    .nav-mark {
+      width: 28px; height: 28px; border-radius: 7px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--cyan) 100%);
+      display: grid; place-items: center;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 12px; font-weight: 900; color: #fff; letter-spacing: -.02em;
+    }
+    .nav-links { display: flex; gap: 22px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-d); transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 9px 20px;
+      background: var(--blue);
+      color: #fff; border-radius: 100px;
+      font-size: 14px; font-weight: 600; letter-spacing: -.01em;
+      transition: all .2s;
+      box-shadow: 0 0 18px rgba(85,112,255,.28);
+    }
+    .nav-cta:hover {
+      background: var(--blue-lt);
+      box-shadow: 0 0 28px rgba(85,112,255,.5);
+      transform: translateY(-1px);
+    }
+    @media (max-width: 680px) { .nav-links { display: none; } }
+
+    /* HERO */
+    .hero {
+      padding-top: 126px; padding-bottom: 96px;
+      position: relative; z-index: 1;
     }
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 60px;
-      align-items: center;
-      position: relative;
-      z-index: 2;
+      display: grid; grid-template-columns: 1.12fr .88fr;
+      gap: 60px; align-items: center;
     }
-    .hero h1 .accent {
-      color: var(--accent);
-      position: relative;
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px;
+      background: rgba(85,112,255,.1);
+      border: 1px solid rgba(85,112,255,.22);
+      border-radius: 100px; margin-bottom: 26px;
     }
-    .hero h1 .accent::after {
-      content: "_";
-      animation: blink 1s infinite;
+    .hero-tag-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blue); box-shadow: 0 0 8px var(--blue);
     }
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
+    .hero-tag span { font-size: 12px; font-weight: 500; color: var(--blue-lt); letter-spacing: .04em; }
+    .hero h1 { color: var(--text); }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(125deg, var(--blue-lt) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .hero p.lead {
-      font-size: clamp(17px, 1.6vw, 21px);
-      color: var(--text-dim);
-      margin-top: 28px;
-      max-width: 560px;
+    .hero-sub {
+      font-size: clamp(15px, 1.5vw, 18px);
+      color: var(--text-d); margin-top: 22px;
+      max-width: 520px; line-height: 1.75;
     }
-    .hero .ctas {
-      display: flex;
-      gap: 16px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
+    .hero-ctas { margin-top: 36px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     .btn-primary {
-      background: var(--accent);
-      color: #0a0a0a;
-      padding: 16px 28px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 16px;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 15px 28px;
+      background: linear-gradient(135deg, var(--blue) 0%, #3a50ff 100%);
+      color: #fff; border-radius: 100px;
+      font-size: 15px; font-weight: 600; letter-spacing: -.01em;
+      transition: all .25s;
+      box-shadow: 0 0 0 1px rgba(85,112,255,.35) inset, 0 10px 36px rgba(85,112,255,.3);
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(184, 255, 63, 0.3);
+      box-shadow: 0 0 0 1px rgba(85,112,255,.55) inset, 0 16px 48px rgba(85,112,255,.5);
     }
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      padding: 16px 28px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      font-weight: 600;
-      font-size: 16px;
-      transition: all 0.2s;
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 22px;
+      border: 1px solid var(--bd-soft); border-radius: 100px;
+      font-size: 15px; font-weight: 500; color: var(--text-d);
+      transition: all .2s;
     }
-    .btn-secondary:hover {
-      border-color: var(--text-dim);
-      background: var(--bg-2);
+    .btn-ghost:hover { border-color: rgba(255,255,255,.2); color: var(--text); }
+    .hero-nums {
+      margin-top: 48px; display: flex; gap: 36px; flex-wrap: wrap;
     }
-    .hero-trust {
-      margin-top: 48px;
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: var(--text-mute);
+    .hero-num-val {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 30px; font-weight: 900; letter-spacing: -.04em;
+      color: var(--text); line-height: 1;
     }
-    .hero-trust strong { color: var(--accent); font-weight: 700; }
+    .hero-num-lbl { font-size: 13px; color: var(--text-m); margin-top: 4px; }
 
-    /* hero visual: terminal-style agent */
-    .hero-visual {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 0;
+    /* terminal */
+    .hero-term {
+      background: var(--bg2);
+      border: 1px solid var(--bd-soft); border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      box-shadow: 0 28px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(85,112,255,.07) inset;
     }
     .term-bar {
-      background: #1f1f1f;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
+      background: #0d1627; padding: 11px 15px;
+      display: flex; align-items: center; gap: 6px;
+      border-bottom: 1px solid var(--bd);
     }
-    .term-bar .dot {
-      width: 12px; height: 12px; border-radius: 50%;
-      background: #555;
-    }
-    .term-bar .dot.r { background: #ff5f57; }
-    .term-bar .dot.y { background: #ffbd2e; }
-    .term-bar .dot.g { background: #28ca42; }
-    .term-bar .label {
-      margin-left: 12px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--text-mute);
-    }
-    .term-body {
-      padding: 24px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13.5px;
-      line-height: 1.85;
-      min-height: 320px;
-    }
-    .term-line { display: block; }
-    .term-prompt { color: var(--accent); }
-    .term-cmd { color: var(--text); }
-    .term-out { color: var(--text-dim); }
-    .term-ok { color: var(--accent); }
-    .term-warn { color: var(--warn); }
+    .td { width: 12px; height: 12px; border-radius: 50%; }
+    .td-r { background: #ff5f57; } .td-y { background: #febc2e; } .td-g { background: #28c840; }
+    .term-lbl { margin-left: 8px; font-size: 11px; font-family: monospace; color: var(--text-m); }
+    .term-body { padding: 20px 18px; font-family: 'SF Mono','Fira Code',monospace; font-size: 12.5px; line-height: 1.95; }
+    .tp { color: var(--blue-lt); } .tc { color: var(--text); } .td2 { color: var(--text-d); }
+    .tok { color: #4ade80; } .tcyan { color: var(--cyan); } .twarn { color: #fb923c; }
+    .tcursor { display: inline-block; width: 6px; height: 13px; background: var(--blue); margin-left: 2px; vertical-align: middle; animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-term { display: none; }
     }
 
-    /* ============= LOGOS ============= */
-    .trust-bar {
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--bg-2);
-    }
-    .trust-bar .label {
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--text-mute);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 24px;
-    }
-    .trust-list {
-      display: flex;
-      justify-content: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      align-items: center;
-      font-weight: 600;
-      color: var(--text-dim);
-      font-size: 16px;
-    }
-    .trust-list span { opacity: 0.7; }
+    /* SECTIONS */
+    .sec-head { max-width: 640px; }
+    .sec-head .lbl { margin-bottom: 14px; }
+    .sec-head h2 { margin-bottom: 14px; }
+    .sec-head p { font-size: clamp(15px, 1.4vw, 17px); color: var(--text-d); line-height: 1.75; }
 
-    /* ============= PAIN ============= */
-    .pain {
-      background: var(--bg);
-    }
-    .pain-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 56px;
-    }
+    /* PAIN */
+    .pain { background: var(--bg); }
+    .pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 52px; }
     .pain-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 32px;
-      transition: all 0.3s;
+      background: var(--bg3); border: 1px solid var(--bd); border-radius: 16px;
+      padding: 28px; transition: all .3s;
     }
-    .pain-card:hover {
-      border-color: var(--warn);
-      transform: translateY(-4px);
+    .pain-card:hover { border-color: rgba(255,95,95,.22); transform: translateY(-3px); }
+    .pain-icon { font-size: 22px; margin-bottom: 16px; }
+    .pain-card h3 { margin-bottom: 10px; }
+    .pain-card p { font-size: 14px; color: var(--text-d); line-height: 1.65; }
+    @media (max-width: 720px) { .pain-grid { grid-template-columns: 1fr; } }
+
+    /* INSTALL */
+    .install { background: var(--bg2); }
+    .agents-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 52px; }
+    .agent-card {
+      background: var(--bg3); border: 1px solid var(--bd); border-radius: 16px;
+      padding: 30px; transition: all .3s; position: relative; overflow: hidden;
     }
-    .pain-card .icon {
-      font-size: 28px;
-      margin-bottom: 16px;
+    .agent-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(85,112,255,.3), transparent);
+      opacity: 0; transition: opacity .3s;
     }
-    .pain-card h3 {
-      font-size: 20px;
-      margin-bottom: 12px;
+    .agent-card:hover::before { opacity: 1; }
+    .agent-card:hover { border-color: rgba(85,112,255,.2); transform: translateY(-3px); }
+    .agent-num { font-size: 11px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .agent-card h3 { font-size: 21px; margin-bottom: 9px; }
+    .agent-desc { font-size: 14px; color: var(--text-d); margin-bottom: 18px; line-height: 1.65; }
+    .agent-list { list-style: none; }
+    .agent-list li { font-size: 13px; color: var(--text-d); padding: 4px 0 4px 18px; position: relative; }
+    .agent-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-size: 11px; top: 5px; }
+    @media (max-width: 720px) { .agents-grid { grid-template-columns: 1fr; } }
+
+    /* PROCESS */
+    .process { background: var(--bg); }
+    .proc-steps { margin-top: 52px; }
+    .proc-step {
+      display: grid; grid-template-columns: 84px 1fr; gap: 28px;
+      padding: 28px 0; border-bottom: 1px solid var(--bd); align-items: start;
     }
-    .pain-card p {
-      color: var(--text-dim);
-      font-size: 15px;
+    .proc-step:last-child { border-bottom: none; }
+    .step-day { font-size: 11px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--blue); padding-top: 5px; }
+    .step-body h3 { margin-bottom: 8px; }
+    .step-body p { font-size: 15px; color: var(--text-d); line-height: 1.7; }
+
+    /* FAQ */
+    .faq { background: var(--bg2); }
+    .faq-list { max-width: 740px; margin: 52px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--bd); }
+    .faq-btn {
+      width: 100%; text-align: left; padding: 20px 0;
+      font-size: 16px; font-weight: 600; color: var(--text);
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      transition: color .2s;
     }
-    @media (max-width: 800px) {
-      .pain-grid { grid-template-columns: 1fr; }
+    .faq-btn:hover { color: var(--blue-lt); }
+    .faq-ic {
+      width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
+      border: 1px solid var(--bd-soft); display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: var(--blue); transition: transform .3s, border-color .3s;
+    }
+    .faq-item.open .faq-ic { transform: rotate(45deg); border-color: var(--blue); }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-item.open .faq-body { max-height: 500px; }
+    .faq-body p { padding-bottom: 20px; font-size: 15px; color: var(--text-d); line-height: 1.75; }
+
+    /* FORM */
+    .form-sec { background: var(--bg); }
+    .form-wrap { max-width: 700px; margin: 0 auto; }
+    .form-head { text-align: center; margin-bottom: 52px; }
+    .form-head .lbl { margin-bottom: 14px; }
+    .form-head h2 { margin-bottom: 14px; }
+    .form-head p { font-size: 16px; color: var(--text-d); line-height: 1.7; }
+
+    .prog { margin-bottom: 26px; }
+    .prog-meta { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .08em; color: var(--text-m); margin-bottom: 7px; }
+    .prog-track { height: 2px; background: var(--bd); border-radius: 100px; overflow: hidden; }
+    .prog-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      border-radius: 100px; transition: width .4s ease; width: 0;
     }
 
-    /* ============= COSA INSTALLIAMO ============= */
-    .install {
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+    .fb {
+      background: var(--bg2); border: 1px solid var(--bd);
+      border-radius: 18px; padding: 26px; margin-bottom: 10px;
+      position: relative; overflow: hidden; transition: border-color .2s;
     }
-    .install-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 56px;
+    .fb:focus-within { border-color: rgba(85,112,255,.16); }
+    .fb:focus-within::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(85,112,255,.32), transparent);
     }
-    .install-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 36px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s;
+    .fb-head { display: flex; align-items: center; gap: 11px; margin-bottom: 5px; }
+    .fb-icon {
+      width: 32px; height: 32px; border-radius: 9px;
+      background: var(--bg3); border: 1px solid var(--bd-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
     }
-    .install-card:hover {
-      border-color: var(--accent);
-    }
-    .install-card .num {
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--accent);
-      font-size: 14px;
-      margin-bottom: 12px;
-    }
-    .install-card h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-    .install-card .desc {
-      color: var(--text-dim);
-      font-size: 15px;
-      margin-bottom: 20px;
-    }
-    .install-card ul {
-      list-style: none;
-      font-size: 14px;
-    }
-    .install-card ul li {
-      color: var(--text-dim);
-      padding: 6px 0;
-      padding-left: 24px;
-      position: relative;
-    }
-    .install-card ul li::before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-    @media (max-width: 800px) {
-      .install-grid { grid-template-columns: 1fr; }
-    }
+    .fb-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 700; color: var(--text); }
+    .fb-sub { font-size: 13px; color: var(--text-d); margin: 5px 0 20px 43px; line-height: 1.55; }
 
-    /* ============= PROCESSO ============= */
-    .process {
-      background: var(--bg);
+    .f { margin-bottom: 13px; }
+    .f:last-child { margin-bottom: 0; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-bottom: 13px; }
+    .frow .f { margin-bottom: 0; }
+    .f label { display: block; font-size: 12px; font-weight: 500; color: var(--text-m); letter-spacing: .02em; margin-bottom: 6px; }
+    .req { color: var(--cyan); }
+    .f input, .f select, .f textarea {
+      width: 100%; background: var(--bg3);
+      border: 1px solid var(--bd); border-radius: 10px;
+      padding: 11px 13px; color: var(--text);
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      transition: border-color .15s, box-shadow .15s;
+      -webkit-appearance: none; appearance: none; outline: none;
     }
-    .process-timeline {
-      margin-top: 56px;
-      position: relative;
+    .f input::placeholder, .f textarea::placeholder { color: var(--text-m); }
+    .f input:focus, .f select:focus, .f textarea:focus {
+      border-color: var(--bd-focus);
+      box-shadow: 0 0 0 3px rgba(85,112,255,.07);
     }
-    .process-step {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 32px;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
+    .f select {
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='rgba(220,232,255,0.28)' d='M5 6L0 0h10z'/></svg>");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 36px; cursor: pointer;
     }
-    .process-step:last-child { border-bottom: none; }
-    .process-step .day {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding-top: 8px;
-    }
-    .process-step h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
-    }
-    .process-step p {
-      color: var(--text-dim);
-      font-size: 15px;
-    }
+    .f select option { background: #091220; }
+    .f textarea { resize: vertical; min-height: 92px; line-height: 1.6; }
 
-    /* ============= CASE STUDIES ============= */
-    .cases {
-      background: var(--bg-2);
+    .chk-group { display: flex; flex-direction: column; gap: 5px; }
+    .chk {
+      display: flex; align-items: flex-start; gap: 11px;
+      padding: 10px 13px; background: var(--bg3);
+      border: 1px solid var(--bd); border-radius: 9px;
+      cursor: pointer; transition: border-color .15s, background .15s;
     }
-    .cases-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 56px;
-    }
-    .case-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 32px;
-      transition: all 0.3s;
-    }
-    .case-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-    .case-card .sector {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .case-card .metric {
-      font-size: 44px;
-      font-weight: 800;
-      color: var(--accent);
-      margin: 16px 0 8px;
-      line-height: 1;
-    }
-    .case-card .metric-label {
-      font-size: 14px;
-      color: var(--text-dim);
-      margin-bottom: 20px;
-    }
-    .case-card .quote {
-      font-size: 15px;
-      color: var(--text);
-      font-style: italic;
-      padding-left: 16px;
-      border-left: 2px solid var(--accent);
-      margin-bottom: 16px;
-    }
-    .case-card .author {
-      font-size: 13px;
-      color: var(--text-mute);
-    }
-    @media (max-width: 900px) {
-      .cases-grid { grid-template-columns: 1fr; }
-    }
+    .chk:hover { border-color: var(--bd-soft); }
+    .chk:has(input:checked) { border-color: rgba(85,112,255,.25); background: rgba(85,112,255,.05); }
+    .chk input[type=checkbox] { width: 14px; height: 14px; flex-shrink: 0; accent-color: var(--blue); cursor: pointer; margin-top: 1px; }
+    .chk span { font-size: 13px; color: var(--text-d); line-height: 1.45; }
 
-    /* ============= PRICING ============= */
-    .pricing {
-      background: var(--bg);
-    }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 56px;
-    }
-    .price-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px 32px;
-      position: relative;
-      transition: all 0.3s;
-    }
-    .price-card:hover {
-      transform: translateY(-4px);
-    }
-    .price-card.featured {
-      border-color: var(--accent);
-      background: linear-gradient(180deg, rgba(184, 255, 63, 0.05) 0%, var(--bg-2) 100%);
-    }
-    .price-card.featured::before {
-      content: "Più richiesto";
-      position: absolute;
-      top: -12px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #0a0a0a;
-      padding: 5px 14px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-    .price-card .name {
-      font-size: 14px;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--text-mute);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 8px;
-    }
-    .price-card .price {
-      font-size: 48px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      margin-bottom: 4px;
-    }
-    .price-card .price small {
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--text-dim);
-    }
-    .price-card .desc {
-      color: var(--text-dim);
-      font-size: 14px;
-      margin-bottom: 28px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-    .price-card ul {
-      list-style: none;
-      margin-bottom: 32px;
-    }
-    .price-card ul li {
-      padding: 8px 0;
-      padding-left: 28px;
-      position: relative;
-      font-size: 14.5px;
-      color: var(--text-dim);
-    }
-    .price-card ul li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-    .price-card .btn-primary,
-    .price-card .btn-secondary {
+    .sub-area { margin-top: 10px; }
+    .sub-card { background: var(--bg2); border: 1px solid var(--bd); border-radius: 18px; padding: 26px; }
+    .promises { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 20px; }
+    .promise { background: var(--bg3); border: 1px solid var(--bd); border-radius: 12px; padding: 14px; }
+    .promise-icon { font-size: 18px; margin-bottom: 7px; }
+    .promise-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .promise-sub { font-size: 11px; color: var(--text-d); line-height: 1.4; }
+    .form-err { font-size: 13px; color: var(--red); min-height: 17px; margin-bottom: 10px; }
+    .btn-sub {
       width: 100%;
-      justify-content: center;
-      text-align: center;
-      display: block;
-      padding: 14px 20px;
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 16px 28px;
+      background: linear-gradient(135deg, var(--blue) 0%, #3a50ff 100%);
+      color: #fff; border-radius: 100px;
+      font-size: 15px; font-weight: 600; letter-spacing: -.01em;
+      transition: all .25s;
+      box-shadow: 0 0 0 1px rgba(85,112,255,.38) inset, 0 10px 36px rgba(85,112,255,.28);
     }
-    @media (max-width: 900px) {
-      .pricing-grid { grid-template-columns: 1fr; }
+    .btn-sub:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 1px rgba(85,112,255,.6) inset, 0 16px 50px rgba(85,112,255,.48);
+    }
+    .btn-sub:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+    .b-arr { font-size: 15px; transition: transform .25s; }
+    .btn-sub:hover:not(:disabled) .b-arr { transform: translateX(4px); }
+
+    .f-success { display: none; text-align: center; padding: 72px 24px; }
+    .f-success.show { display: block; }
+    .s-ring {
+      width: 68px; height: 68px; border-radius: 50%;
+      background: rgba(74,222,128,.07); border: 1px solid rgba(74,222,128,.25);
+      color: #4ade80; font-size: 26px;
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+      animation: pop .45s cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes pop { from{transform:scale(.3);opacity:0} to{transform:scale(1);opacity:1} }
+    .f-success h3 { font-family: 'Bricolage Grotesque',sans-serif; font-size: 26px; margin-bottom: 11px; }
+    .f-success p { font-size: 15px; color: var(--text-d); max-width: 360px; margin: 0 auto; line-height: 1.7; }
+
+    @media (max-width: 560px) {
+      .frow { grid-template-columns: 1fr; }
+      .fb { padding: 18px 16px; }
+      .promises { grid-template-columns: 1fr; }
+      .sub-card { padding: 18px 16px; }
     }
 
-    /* ============= FAQ ============= */
-    .faq {
-      background: var(--bg-2);
-    }
-    .faq-list {
-      max-width: 800px;
-      margin: 56px auto 0;
-    }
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-    .faq-q {
-      width: 100%;
-      background: transparent;
-      color: var(--text);
-      text-align: left;
-      padding: 24px 0;
-      font-size: 18px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .faq-q .plus {
-      color: var(--accent);
-      font-size: 24px;
-      transition: transform 0.3s;
-    }
-    .faq-item.open .faq-q .plus {
-      transform: rotate(45deg);
-    }
-    .faq-a {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      color: var(--text-dim);
-      font-size: 15px;
-    }
-    .faq-item.open .faq-a {
-      max-height: 400px;
-      padding: 0 0 24px;
-    }
+    /* FOOTER */
+    .footer { background: var(--bg2); border-top: 1px solid var(--bd); padding: 48px 0 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 36px; }
+    .footer-brand { display: flex; align-items: center; gap: 9px; margin-bottom: 14px; font-weight: 700; font-size: 15px; }
+    .footer-desc { font-size: 14px; color: var(--text-d); max-width: 268px; line-height: 1.65; }
+    .footer h4 { font-size: 11px; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--text-m); margin-bottom: 14px; }
+    .footer ul { list-style: none; }
+    .footer ul li { padding: 3px 0; }
+    .footer ul a { font-size: 14px; color: var(--text-d); transition: color .2s; }
+    .footer ul a:hover { color: var(--text); }
+    .footer-btm { padding-top: 22px; border-top: 1px solid var(--bd); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--text-m); }
+    @media (max-width: 680px) { .footer-grid { grid-template-columns: 1fr; } }
 
-    /* ============= FINAL CTA + FORM ============= */
-    .final-cta {
-      background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
-    }
-    .final-cta .container { max-width: 720px; }
-    .final-cta .header { text-align: center; margin-bottom: 48px; }
-    .contact-form {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    @media (max-width: 600px) {
-      .form-row { grid-template-columns: 1fr; }
-      .contact-form { padding: 24px; }
-    }
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      background: var(--bg-3);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 16px;
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 15px;
-      transition: border-color 0.2s;
-      outline: none;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .contact-form input::placeholder,
-    .contact-form textarea::placeholder {
-      color: var(--text-mute);
-    }
-    .contact-form input:focus,
-    .contact-form select:focus,
-    .contact-form textarea:focus {
-      border-color: var(--accent);
-    }
-    .contact-form select { cursor: pointer; margin-bottom: 16px; }
-    .contact-form textarea { margin-bottom: 16px; resize: vertical; min-height: 110px; }
-    .contact-form .submit-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .contact-form .btn-primary { flex-shrink: 0; }
-    .contact-form .form-note {
-      font-size: 13px;
-      color: var(--text-mute);
-      margin: 0;
-    }
-    .contact-form .success-msg {
-      display: none;
-      text-align: center;
-      padding: 24px;
-      color: var(--accent);
-      font-size: 18px;
-      font-weight: 600;
-    }
-    .contact-form .error-msg {
-      display: none;
-      font-size: 13px;
-      color: var(--warn);
-      margin-top: 8px;
-    }
-    .final-cta .container { max-width: 720px; }
-    .final-cta h2 {
-      margin-bottom: 20px;
-    }
-    .final-cta p {
-      color: var(--text-dim);
-      font-size: 18px;
-      margin-bottom: 36px;
-    }
+    /* FADE UP */
+    .fu { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .fu.in { opacity: 1; transform: none; }
 
-    /* ============= FOOTER ============= */
-    footer {
-      padding: 48px 0 32px;
-      border-top: 1px solid var(--border);
-      background: var(--bg);
-    }
-    footer .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    footer .col-brand p {
-      color: var(--text-dim);
-      font-size: 14px;
-      margin-top: 16px;
-      max-width: 300px;
-    }
-    footer h4 {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-mute);
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-    footer ul { list-style: none; }
-    footer ul li {
-      padding: 4px 0;
-      font-size: 14px;
-      color: var(--text-dim);
-    }
-    footer ul a:hover { color: var(--accent); }
-    .copyright {
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 13px;
-      color: var(--text-mute);
-    }
-    @media (max-width: 800px) {
-      footer .footer-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============= ANIMATIONS ============= */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* DIVIDER */
+    .div-line { height: 1px; background: linear-gradient(90deg, transparent, var(--bd-soft), transparent); }
   </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
-<nav class="top">
-  <div class="container inner">
-    <a href="#top" class="brand">
-      <span class="brand-mark">AI</span>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-brand">
+      <span class="nav-mark">AI</span>
       <span>AI Installer</span>
     </a>
-    <ul>
+    <ul class="nav-links">
       <li><a href="#cosa">Cosa installiamo</a></li>
       <li><a href="#processo">Processo</a></li>
-      <li><a href="#casi">Casi</a></li>
-      <li><a href="#prezzi">Prezzi</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="#contatto" class="cta-mini">Prenota call</a>
+    <a href="#contatto" class="nav-cta">Richiedi consulenza</a>
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <header class="hero" id="top">
-  <div class="container hero-grid">
-    <div>
-      <span class="eyebrow">// AI Setup hands-on per PMI italiane</span>
-      <h1>Installiamo agenti AI<br><span class="accent">nel tuo studio</span></h1>
-      <p class="lead">Non ti vendiamo l'ennesimo tool con abbonamento mensile. Veniamo dentro la tua attività, capiamo cosa ti fa perdere ore ogni settimana, e installiamo agenti AI custom in <strong style="color:var(--text)">14 giorni</strong>. Zero tecnicismi, zero buzzword.</p>
-      <div class="ctas">
-        <a href="#contatto" class="btn-primary">Prenota una call di setup →</a>
-        <a href="#processo" class="btn-secondary">Come funziona</a>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-tag">
+          <span class="hero-tag-dot"></span>
+          <span>Sistema AI su misura · studi e PMI italiane</span>
+        </div>
+        <h1 class="d">Il tuo studio.<br><em>Automatizzato</em><br>su misura.</h1>
+        <p class="hero-sub">Non vendiamo software. Non vendiamo abbonamenti. Entriamo nel tuo studio, capiamo dove perdi ore ogni settimana, e installiamo agenti AI custom — integrati nei tool che già usi — in 14 giorni.</p>
+        <div class="hero-ctas">
+          <a href="#contatto" class="btn-primary">Richiedi consulenza gratuita <span>→</span></a>
+          <a href="#cosa" class="btn-ghost">Come funziona</a>
+        </div>
+        <div class="hero-nums">
+          <div>
+            <div class="hero-num-val">14gg</div>
+            <div class="hero-num-lbl">dal primo contatto al go-live</div>
+          </div>
+          <div>
+            <div class="hero-num-val">9+</div>
+            <div class="hero-num-lbl">studi già automatizzati</div>
+          </div>
+          <div>
+            <div class="hero-num-val">One-shot</div>
+            <div class="hero-num-lbl">nessun abbonamento forzato</div>
+          </div>
+        </div>
       </div>
-      <div class="hero-trust">
-        <div><strong>14gg</strong> setup medio</div>
-        <div><strong>9</strong> studi attivi</div>
-        <div><strong>One-shot</strong> nessun ricorrente forzato</div>
-      </div>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="term-bar">
-        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="label">studio-rossi-commercialista@ai-installer ~ % </span>
-      </div>
-      <div class="term-body" id="terminal">
-        <span class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">ai-installer init --client="Studio Rossi"</span></span>
-        <span class="term-line"><span class="term-out">→ Discovery completata. 14 task ripetitivi rilevati.</span></span>
-        <span class="term-line"><span class="term-out">→ Build agenti: intake, drafting, follow-up, scadenze.</span></span>
-        <span class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">ai-installer deploy --target=notion+wa+gmail</span></span>
-        <span class="term-line"><span class="term-ok">✓ Agente Intake installato (Notion API)</span></span>
-        <span class="term-line"><span class="term-ok">✓ Agente Drafting installato (Word + Gmail)</span></span>
-        <span class="term-line"><span class="term-ok">✓ Agente Follow-up installato (WhatsApp Business)</span></span>
-        <span class="term-line"><span class="term-ok">✓ Agente Scadenze installato (Calendar + alert)</span></span>
-        <span class="term-line"><span class="term-out">→ Setup completato in 11 giorni.</span></span>
-        <span class="term-line"><span class="term-out">→ Ore risparmiate stimate: <span class="term-ok">22h/settimana</span></span></span>
-        <span class="term-line"><span class="term-prompt">$</span> <span class="term-cmd" id="cursor">_</span></span>
+      <div class="hero-term" aria-hidden="true">
+        <div class="term-bar">
+          <span class="td td-r"></span><span class="td td-y"></span><span class="td td-g"></span>
+          <span class="term-lbl">studio-bianchi-cdl ~ ai-installer</span>
+        </div>
+        <div class="term-body">
+          <div><span class="tp">$</span> <span class="tc">ai-installer analyse</span></div>
+          <div><span class="td2">→ Mappatura studio completata.</span></div>
+          <div><span class="td2">→ Task ripetitivi rilevati: <span class="tcyan">11</span></span></div>
+          <div><span class="td2">→ Ore perse/settimana stimate: <span class="twarn">16.4h</span></span></div>
+          <br>
+          <div><span class="tp">$</span> <span class="tc">ai-installer install</span></div>
+          <div><span class="td2">  agents: intake, bozze, scadenze, normativa</span></div>
+          <br>
+          <div><span class="tok">✓</span> <span class="td2">Agente Intake attivo (email + WhatsApp)</span></div>
+          <div><span class="tok">✓</span> <span class="td2">Agente Bozze collegato ai tuoi template</span></div>
+          <div><span class="tok">✓</span> <span class="td2">Agente Scadenze su Calendar + alert</span></div>
+          <div><span class="tok">✓</span> <span class="td2">Agente Normativa (INPS, circolari, Fisco)</span></div>
+          <br>
+          <div><span class="td2">→ Setup completato in <span class="tcyan">12 giorni</span>.</span></div>
+          <div><span class="td2">→ Stima ore liberate: <span class="tok">~14h/settimana</span></span></div>
+          <div><span class="tp">$</span> <span class="tcursor"></span></div>
+        </div>
       </div>
     </div>
   </div>
 </header>
 
-<!-- ===== TRUST BAR ===== -->
-<div class="trust-bar">
-  <div class="container">
-    <div class="label">// Già installato in</div>
-    <div class="trust-list">
-      <span>Studi commercialisti</span>
-      <span>Studi legali</span>
-      <span>Agenzie immobiliari</span>
-      <span>Broker finanziari</span>
-      <span>Studi nutrizionali</span>
-    </div>
-  </div>
-</div>
+<div class="div-line"></div>
 
-<!-- ===== PAIN ===== -->
+<!-- PAIN -->
 <section class="pain">
-  <div class="container">
-    <span class="eyebrow">// Il problema vero</span>
-    <h2>L'AI generica non risolve il tuo lavoro.</h2>
-    <p style="color:var(--text-dim); font-size:18px; max-width:680px; margin-top:20px;">ChatGPT è uno strumento. Tu hai bisogno di sistemi che lavorino dentro la tua operatività, sui tuoi dati, con il tuo flusso. Non di un altro tab del browser da gestire.</p>
-
+  <div class="wrap">
+    <div class="sec-head fu">
+      <p class="lbl">Il problema vero</p>
+      <h2 class="d">L'AI generica non capisce come lavori tu.</h2>
+      <p>ChatGPT e i tool SaaS standard sono pensati per tutti — cioè per nessuno in particolare. Un CDL con Zucchetti, 80 clienti e 3 collaboratori ha bisogno di qualcosa di diverso.</p>
+    </div>
     <div class="pain-grid">
-      <div class="pain-card fade-up">
-        <div class="icon">⚠</div>
-        <h3>Continui a copiare-incollare</h3>
-        <p>Ogni cliente nuovo: stessa intake, stessi documenti, stesse mail. L'AI generica non conosce la tua azienda, quindi ogni volta riparti da zero.</p>
+      <div class="pain-card fu">
+        <div class="pain-icon">⏱</div>
+        <h3>Perdi ore in lavori identici</h3>
+        <p>Ogni cliente nuovo: stessa email, stessa richiesta documenti, stessa bozza. L'AI generica non conosce i tuoi clienti, i tuoi template, il tuo tono — riparti da zero ogni volta.</p>
       </div>
-      <div class="pain-card fade-up">
-        <div class="icon">⚠</div>
-        <h3>Hai 12 tool che non parlano fra loro</h3>
-        <p>Notion, Gmail, WhatsApp, CRM, fatture, Drive. Saltare da uno all'altro è il vero costo. L'AI dovrebbe vivere dentro questi tool, non aggiungersi.</p>
+      <div class="pain-card fu">
+        <div class="pain-icon">🔗</div>
+        <h3>I tuoi tool sono isole</h3>
+        <p>Gestionale, email, WhatsApp, Drive, portali degli ordini. Ogni dato che vive in un posto deve essere copiato a mano in un altro. Il vero costo invisibile del tuo studio.</p>
       </div>
-      <div class="pain-card fade-up">
-        <div class="icon">⚠</div>
-        <h3>Paghi licenze AI che usi al 5%</h3>
-        <p>Abbonamenti SaaS verticali, training a metà, dashboard mai aperte. Risultato: budget bruciato e team che torna alle abitudini di prima.</p>
+      <div class="pain-card fu">
+        <div class="pain-icon">💸</div>
+        <h3>Abbonamenti che usi al 10%</h3>
+        <p>Tool AI verticali costosi, training a metà, dashboard mai aperte. Risultato: spesa che cresce, operatività che non cambia, team che torna alle abitudini di prima.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== COSA INSTALLIAMO ===== -->
+<!-- WHAT WE INSTALL -->
 <section class="install" id="cosa">
-  <div class="container">
-    <span class="eyebrow">// Cosa installiamo davvero</span>
-    <h2>4 categorie di agenti.<br>Tutti dentro la tua operatività.</h2>
-    <p style="color:var(--text-dim); font-size:18px; max-width:680px; margin-top:20px;">Non installiamo "l'AI". Installiamo agenti specifici che fanno cose specifiche, dentro i tool che già usi. Niente migrazioni, niente piattaforme nuove da imparare.</p>
-
-    <div class="install-grid">
-      <div class="install-card fade-up">
-        <div class="num">// 01 — INTAKE</div>
+  <div class="wrap">
+    <div class="sec-head fu">
+      <p class="lbl">Cosa installiamo</p>
+      <h2 class="d">Agenti specifici.<br>Dentro la tua operatività.</h2>
+      <p>Non installiamo "l'AI". Installiamo agenti che fanno cose precise, integrate con i tool che già usi. Zero migrazioni, zero nuove piattaforme da imparare.</p>
+    </div>
+    <div class="agents-grid">
+      <div class="agent-card fu">
+        <div class="agent-num">// 01 — INTAKE</div>
         <h3>Agente di acquisizione clienti</h3>
-        <p class="desc">Qualifica i nuovi contatti, raccoglie le informazioni essenziali, pre-popola la pratica. Tu apri la cartella e trovi tutto pronto.</p>
-        <ul>
-          <li>Intake automatico via WhatsApp / form / email</li>
-          <li>Salvataggio strutturato in Notion / Drive / CRM</li>
+        <p class="agent-desc">Qualifica i nuovi contatti, raccoglie le informazioni essenziali via WhatsApp o email, pre-popola la pratica nel tuo gestionale. Tu apri il fascicolo e trovi tutto già pronto.</p>
+        <ul class="agent-list">
+          <li>Intake automatico via WhatsApp Business / form / email</li>
+          <li>Salvataggio strutturato in Notion, Drive o CRM esistente</li>
           <li>Notifica al team con priorità intelligente</li>
         </ul>
       </div>
-
-      <div class="install-card fade-up">
-        <div class="num">// 02 — DOCUMENTAZIONE</div>
-        <h3>Agente di drafting</h3>
-        <p class="desc">Genera bozze di atti, contratti, mail, perizie, piani — usando i tuoi template e il tuo tono. Tu editi, non scrivi da zero.</p>
-        <ul>
-          <li>Pesca dai tuoi template storici</li>
-          <li>Riempie con i dati del cliente automaticamente</li>
-          <li>Output in Word / Google Doc, pronti da firmare</li>
+      <div class="agent-card fu">
+        <div class="agent-num">// 02 — DRAFTING</div>
+        <h3>Agente di redazione documenti</h3>
+        <p class="agent-desc">Genera bozze di atti, comunicazioni, relazioni e lettere usando i tuoi template storici e il tuo tono. Tu editi e approvi — non scrivi da zero ogni volta.</p>
+        <ul class="agent-list">
+          <li>Pesca e adatta i tuoi template storici</li>
+          <li>Riempie automaticamente con i dati del cliente</li>
+          <li>Output in Word o Google Doc, pronto da revisionare</li>
         </ul>
       </div>
-
-      <div class="install-card fade-up">
-        <div class="num">// 03 — FOLLOW-UP</div>
-        <h3>Agente di outreach e nurturing</h3>
-        <p class="desc">Mantiene la relazione viva con clienti, lead, partner. Promemoria, check-in, recap mensili — al posto tuo, nel tuo nome.</p>
-        <ul>
-          <li>Sequence automatiche su email / WhatsApp</li>
+      <div class="agent-card fu">
+        <div class="agent-num">// 03 — SCADENZE E FOLLOW-UP</div>
+        <h3>Agente di gestione relazioni</h3>
+        <p class="agent-desc">Mantiene le relazioni vive con clienti e lead. Promemoria scadenze, richieste documenti ricorrenti, check-in mensili — al posto tuo, nel tuo nome, con il tuo tono.</p>
+        <ul class="agent-list">
+          <li>Sequence automatiche su email e WhatsApp</li>
           <li>Personalizzazione basata sullo storico cliente</li>
-          <li>Alert quando serve intervento umano</li>
+          <li>Alert immediato quando serve intervento umano</li>
         </ul>
       </div>
-
-      <div class="install-card fade-up">
-        <div class="num">// 04 — ANALISI</div>
-        <h3>Agente di reporting e ricerca</h3>
-        <p class="desc">Analizza dati, produce report, fa ricerca normativa o di mercato. Tu dedichi le ore alle decisioni, non alla raccolta dati.</p>
-        <ul>
-          <li>Ricerca normativa / giurisprudenza / di mercato</li>
+      <div class="agent-card fu">
+        <div class="agent-num">// 04 — RICERCA E REPORTING</div>
+        <h3>Agente di analisi e normativa</h3>
+        <p class="agent-desc">Fa ricerca normativa, analizza documenti, produce report mensili per i clienti. Tu dedichi le ore alle decisioni, non alla raccolta e sintesi di dati.</p>
+        <ul class="agent-list">
+          <li>Ricerca INPS, circolari, sentenze, normativa fiscale</li>
           <li>Report mensili automatici per cliente</li>
           <li>Sintesi su richiesta in linguaggio naturale</li>
         </ul>
@@ -923,354 +584,477 @@
   </div>
 </section>
 
-<!-- ===== PROCESSO ===== -->
+<!-- PROCESS -->
 <section class="process" id="processo">
-  <div class="container">
-    <span class="eyebrow">// Come lavoriamo</span>
-    <h2>Dal primo call al go-live: 14 giorni.</h2>
-    <p style="color:var(--text-dim); font-size:18px; max-width:680px; margin-top:20px;">Niente sviluppo software a tempo indeterminato. Niente promesse vaghe. Un processo fisso, scadenzato, con consegna finale.</p>
-
-    <div class="process-timeline">
-      <div class="process-step fade-up">
-        <div class="day">Giorno 1-2</div>
-        <div>
-          <h3>Discovery call (gratuita)</h3>
-          <p>30-45 minuti insieme. Mappiamo i tuoi 5-10 task ripetitivi più costosi, identifichiamo dove l'AI ha senso (e dove no — sì, te lo diciamo). Esci con un piano scritto.</p>
+  <div class="wrap">
+    <div class="sec-head fu">
+      <p class="lbl">Come lavoriamo</p>
+      <h2 class="d">Dal primo contatto al go-live: 14 giorni.</h2>
+      <p>Niente sviluppo software a tempo indeterminato. Niente promesse vaghe. Un processo fisso, con date precise e una consegna reale.</p>
+    </div>
+    <div class="proc-steps">
+      <div class="proc-step fu">
+        <div class="step-day">Giorno 1–2</div>
+        <div class="step-body">
+          <h3>Discovery call gratuita</h3>
+          <p>30–45 minuti insieme. Mappiamo i tuoi 5–10 task ripetitivi più costosi, identifichiamo dove l'AI ha senso — e dove no, te lo diciamo chiaramente. Esci con un piano scritto e una stima d'impatto reale.</p>
         </div>
       </div>
-      <div class="process-step fade-up">
-        <div class="day">Giorno 3-7</div>
-        <div>
-          <h3>Build degli agenti</h3>
-          <p>Costruiamo gli agenti sul tuo stack reale (Google Workspace, Notion, WhatsApp, il tuo CRM). Tu non fai nulla. Riceveresti aggiornamenti video brevi ogni 2 giorni.</p>
+      <div class="proc-step fu">
+        <div class="step-day">Giorno 3–7</div>
+        <div class="step-body">
+          <h3>Build sul tuo stack reale</h3>
+          <p>Costruiamo gli agenti integrati con il tuo gestionale, Google Workspace, WhatsApp Business, il tuo CRM. Tu non fai nulla — ricevi aggiornamenti video brevi ogni 2 giorni per vedere lo stato di avanzamento.</p>
         </div>
       </div>
-      <div class="process-step fade-up">
-        <div class="day">Giorno 8-12</div>
-        <div>
-          <h3>Test con dati reali</h3>
-          <p>Provi gli agenti su 3-5 casi reali del tuo studio. Ti accorgi di cosa va aggiustato, lo aggiustiamo nelle 48 ore successive. Niente ping-pong di mail.</p>
+      <div class="proc-step fu">
+        <div class="step-day">Giorno 8–12</div>
+        <div class="step-body">
+          <h3>Test con casi reali del tuo studio</h3>
+          <p>Provi gli agenti su 3–5 pratiche reali. Vedi cosa funziona e cosa va aggiustato. Le correzioni arrivano entro 48 ore. Niente ping-pong di email, niente "apriremo un ticket".</p>
         </div>
       </div>
-      <div class="process-step fade-up">
-        <div class="day">Giorno 13-14</div>
-        <div>
-          <h3>Handoff + training team</h3>
-          <p>Sessione finale con te e il tuo staff. Manuale operativo personalizzato, video tutorial dei tuoi flussi, accesso al supporto per 30 giorni inclusi.</p>
+      <div class="proc-step fu">
+        <div class="step-day">Giorno 13–14</div>
+        <div class="step-body">
+          <h3>Handoff + formazione team</h3>
+          <p>Sessione finale con te e i tuoi collaboratori. Manuale operativo personalizzato, video tutorial dei flussi specifici del tuo studio. Supporto incluso nei 30 giorni successivi.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== CASE STUDIES ===== -->
-<section class="cases" id="casi">
-  <div class="container">
-    <span class="eyebrow">// Risultati reali</span>
-    <h2>Numeri di chi ha installato.</h2>
-    <p style="color:var(--text-dim); font-size:18px; max-width:680px; margin-top:20px;">Non testimonial generiche. Metriche specifiche, settori specifici, da implementazioni concluse.</p>
-
-    <div class="cases-grid">
-      <div class="case-card fade-up">
-        <div class="sector">Studio commercialista — Milano</div>
-        <div class="metric">22h</div>
-        <div class="metric-label">risparmiate a settimana sul team</div>
-        <p class="quote">"L'agente di drafting ci ha tolto la parte noiosa: scrivere lo stesso parere 30 volte all'anno. Ora arriva con il 70% già pronto."</p>
-        <div class="author">— Titolare, 4 collaboratori</div>
-      </div>
-
-      <div class="case-card fade-up">
-        <div class="sector">Agenzia immobiliare — Bologna</div>
-        <div class="metric">3.4x</div>
-        <div class="metric-label">lead qualificati al mese</div>
-        <p class="quote">"L'agente intake fa il primo screening su WhatsApp. Quando io entro, so già budget, zona, urgenza. Non perdo più tempo con curiosi."</p>
-        <div class="author">— Founder agenzia, 2 sedi</div>
-      </div>
-
-      <div class="case-card fade-up">
-        <div class="sector">Studio legale — Roma</div>
-        <div class="metric">-65%</div>
-        <div class="metric-label">tempo ricerca giurisprudenza</div>
-        <p class="quote">"Prima passavo ore in DeJure. Ora chiedo all'agente, mi dà sentenze pertinenti con sintesi e link. Verifico, è quasi sempre giusto."</p>
-        <div class="author">— Avvocato civilista</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PRICING ===== -->
-<section class="pricing" id="prezzi">
-  <div class="container">
-    <span class="eyebrow">// Trasparenza totale</span>
-    <h2>3 livelli. Prezzi pubblici.<br>Pagamento one-shot.</h2>
-    <p style="color:var(--text-dim); font-size:18px; max-width:680px; margin-top:20px;">Niente preventivi misteriosi. Niente "contattaci per il prezzo". Scegli il livello, sai cosa paghi, sai cosa ricevi.</p>
-
-    <div class="pricing-grid">
-      <div class="price-card fade-up">
-        <div class="name">// STARTER</div>
-        <div class="price">€2.400 <small>una tantum</small></div>
-        <div class="desc">1 agente custom installato. Per chi vuole testare il valore prima di scalare.</div>
-        <ul>
-          <li>Discovery call + audit operativo</li>
-          <li>1 agente custom (tua scelta)</li>
-          <li>Setup completo nel tuo stack</li>
-          <li>Manuale operativo personalizzato</li>
-          <li>30 giorni supporto post-setup</li>
-        </ul>
-        <a href="#contatto" class="btn-secondary">Prenota call →</a>
-      </div>
-
-      <div class="price-card featured fade-up">
-        <div class="name">// PROFESSIONAL</div>
-        <div class="price">€5.800 <small>una tantum</small></div>
-        <div class="desc">Pacchetto completo. Per studi e PMI che vogliono sistemare l'operatività in un colpo solo.</div>
-        <ul>
-          <li>Tutto del piano Starter</li>
-          <li>3 agenti custom integrati fra loro</li>
-          <li>Training team (sessione 90 min)</li>
-          <li>Video tutorial flussi personalizzati</li>
-          <li>60 giorni supporto post-setup</li>
-          <li>1 sessione tuning a 60 giorni</li>
-        </ul>
-        <a href="#contatto" class="btn-primary">Prenota call →</a>
-      </div>
-
-      <div class="price-card fade-up">
-        <div class="name">// SCALE</div>
-        <div class="price">€12.000 <small>una tantum</small></div>
-        <div class="desc">Multi-sede o team 10+. Architettura agenti completa con governance.</div>
-        <ul>
-          <li>Tutto del piano Professional</li>
-          <li>Agenti illimitati nel perimetro definito</li>
-          <li>Sicurezza & compliance (GDPR + AI Act)</li>
-          <li>Documentazione tecnica completa</li>
-          <li>90 giorni supporto post-setup</li>
-          <li>2 sessioni tuning trimestrali incluse</li>
-        </ul>
-        <a href="#contatto" class="btn-secondary">Prenota call →</a>
-      </div>
-    </div>
-    <p style="text-align:center; margin-top:32px; color:var(--text-mute); font-size:14px;">Tutti i prezzi sono IVA esclusa. Possibilità rateizzazione in 2 tranche per Professional e Scale.</p>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
+<!-- FAQ -->
 <section class="faq" id="faq">
-  <div class="container">
-    <span class="eyebrow">// Domande frequenti</span>
-    <h2>Quello che ci chiedono prima di firmare.</h2>
-
+  <div class="wrap">
+    <div class="sec-head fu" style="max-width:100%; margin-bottom:0;">
+      <p class="lbl">Domande frequenti</p>
+      <h2 class="d">Quello che ci chiedono prima di iniziare.</h2>
+    </div>
     <div class="faq-list">
+
       <div class="faq-item">
-        <button class="faq-q">I miei dati sono al sicuro? <span class="plus">+</span></button>
-        <div class="faq-a">
-          <p>Sì. Lavoriamo con NDA reciproco prima della discovery. Gli agenti vengono installati nel TUO stack (il tuo Google Workspace, il tuo Notion, ecc.) — non passiamo i tuoi dati su nostri server. Per i clienti Scale forniamo documentazione tecnica completa per audit esterno e conformità AI Act + GDPR.</p>
+        <button class="faq-btn">
+          Devo cambiare i tool che uso oggi?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-body">
+          <p>No. La filosofia è esattamente l'opposta: gli agenti vivono <em>dentro</em> i tool che già usi — Google Workspace, Zucchetti, TeamSystem, Notion, WhatsApp Business, il tuo CRM. Se usi qualcosa di specifico, ce lo dici nella discovery e valutiamo l'integrazione (nel 95% dei casi è fattibile senza modificare nulla nel tuo setup attuale).</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">Cosa succede se l'agente sbaglia? <span class="plus">+</span></button>
-        <div class="faq-a">
-          <p>Tutti gli agenti girano in modalità "human-in-the-loop" di default: producono output, tu approvi prima dell'invio/pubblicazione. Solo quando ti senti sicuro abilitiamo le azioni autonome, e mai per task irreversibili (es. invio mail importanti, fatturazione). Niente azioni distruttive senza tua conferma.</p>
+        <button class="faq-btn">
+          I dati del mio studio e dei miei clienti sono al sicuro?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-body">
+          <p>Sì. Prima di ogni discovery firmiamo NDA reciproco. Gli agenti vengono installati nel tuo stack, non in nostri server dedicati — i tuoi dati rimangono dentro il tuo Google Workspace, il tuo Notion, il tuo gestionale. Documentazione tecnica completa per compliance GDPR e AI Act su richiesta.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">Devo cambiare i tool che uso oggi? <span class="plus">+</span></button>
-        <div class="faq-a">
-          <p>No. La filosofia è esattamente l'opposta: gli agenti vivono dentro Google Workspace, Notion, WhatsApp Business, il tuo CRM esistente. Se usi qualcosa di esotico ce lo dici alla discovery, valutiamo se è integrabile (95% dei casi sì).</p>
+        <button class="faq-btn">
+          Cosa succede se l'agente sbaglia?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-body">
+          <p>Tutti gli agenti girano in modalità "human-in-the-loop" di default: producono output, tu approvi prima dell'invio o dell'azione finale. Solo quando sei sicuro abilitiamo le azioni autonome — e mai per task irreversibili come invio email importanti o modifiche a documenti firmati. Nessuna azione distruttiva senza la tua conferma esplicita.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">E se dopo il setup voglio modifiche? <span class="plus">+</span></button>
-        <div class="faq-a">
-          <p>Hai 30/60/90 giorni di supporto incluso (a seconda del piano). Dopo, le modifiche minori sono gratuite, quelle strutturali sono pacchetti a giornata (€600/giornata). Non vendiamo abbonamenti forzati.</p>
+        <button class="faq-btn">
+          Quanto costa "tenere accesi" gli agenti dopo l'installazione?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-body">
+          <p>Solo i costi infrastrutturali reali: tipicamente tra €20 e €80/mese dipendente dal volume, legati all'uso delle API LLM (OpenAI/Anthropic/Google). Te li calcoliamo in discovery con una stima precisa basata sul tuo volume reale. Nessun fee mensile da noi, nessuna sorpresa nascosta.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">Quanto costa "tenere acceso" gli agenti dopo? <span class="plus">+</span></button>
-        <div class="faq-a">
-          <p>Solo i costi infrastrutturali reali: API LLM (es. €20-80/mese a seconda del volume), eventuali tool premium che già paghi. Te li dichiariamo in discovery con stima precisa. Nessun fee nascosta.</p>
+        <button class="faq-btn">
+          Lavorate anche con studi piccoli, solopreneur?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-body">
+          <p>Il nostro sweet spot è 1–15 persone. Per i solopreneur il setup è spesso più veloce e mirato. L'unica cosa che verifichiamo in discovery è che ci sia un volume di lavoro ripetitivo sufficiente per ammortizzare l'investimento — se non c'è, te lo diciamo prima, anche se questo significa non venderti niente.</p>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q">Lavorate con piccoli studi o solo grandi? <span class="plus">+</span></button>
-        <div class="faq-a">
-          <p>Il nostro sweet spot è 1-15 persone. Sotto i 12-15k€/anno di costi recuperabili dall'automazione, il ROI dello Starter potrebbe non valerne la pena — te lo diciamo onestamente in discovery, anche se questo significa non venderti niente.</p>
+        <button class="faq-btn">
+          Posso chiedere modifiche dopo il go-live?
+          <span class="faq-ic">+</span>
+        </button>
+        <div class="faq-body">
+          <p>Hai 30 giorni di supporto inclusi nel setup. Modifiche minori durante questo periodo: gratuite. Dopo, piccole ottimizzazioni (aggiustare un prompt, aggiungere un campo) sono incluse nelle sessioni di manutenzione mensile facoltativa. Modifiche strutturali (nuovi agenti, integrazioni nuove) vengono quotate separatamente — nessun abbonamento forzato.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ===== FINAL CTA ===== -->
-<section class="final-cta" id="contatto">
-  <div class="container">
-    <div class="header">
-      <span class="eyebrow">// Prossimo step</span>
-      <h2>Dicci cosa vuoi automatizzare.<br>Ti rispondiamo entro 24h.</h2>
-      <p style="color:var(--text-dim); font-size:18px; margin-top:16px;">Nessun impegno, nessuno spam. Un consulente (umano) legge ogni messaggio e risponde con una proposta concreta.</p>
-    </div>
+<!-- FORM -->
+<section class="form-sec" id="contatto">
+  <div class="wrap">
+    <div class="form-wrap">
+      <div class="form-head fu">
+        <p class="lbl">Consulenza gratuita</p>
+        <h2 class="d">Dicci come lavori.<br>Ti rispondiamo entro 24 ore.</h2>
+        <p>Non serve preparare nulla. Descrivi il tuo studio in 5 minuti — poi leggiamo tutto e ti mandiamo un'analisi concreta sul tuo caso specifico.</p>
+      </div>
 
-    <form class="contact-form" id="contactForm" novalidate>
-      <div class="form-row">
-        <input type="text" id="cf_nome" placeholder="Nome e azienda" required autocomplete="name" />
-        <input type="email" id="cf_email" placeholder="Email" required autocomplete="email" />
+      <div class="prog">
+        <div class="prog-meta"><span>Completamento</span><span id="progPct">0%</span></div>
+        <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
       </div>
-      <select id="cf_settore" required>
-        <option value="">Settore della tua attività</option>
-        <option value="commercialista">Studio commercialista / fiscalista</option>
-        <option value="avvocato">Studio legale / notarile</option>
-        <option value="immobiliare">Agenzia immobiliare</option>
-        <option value="broker">Broker / consulente finanziario</option>
-        <option value="pmi">PMI / azienda</option>
-        <option value="altro">Altro</option>
-      </select>
-      <textarea id="cf_msg" placeholder="Cosa vorresti automatizzare? (es. intake clienti, redazione documenti, follow-up, ricerca normativa...)" rows="4"></textarea>
-      <div class="submit-row">
-        <button type="submit" class="btn-primary" id="cf_submit">Invia richiesta →</button>
-        <p class="form-note">Rispondo entro 24h. Zero spam, zero abbonamento newsletter.</p>
+
+      <form id="consultForm" novalidate>
+
+        <!-- BLOCK 1 — Chi sei -->
+        <div class="fb fu">
+          <div class="fb-head">
+            <div class="fb-icon">🏢</div>
+            <div class="fb-title">Chi sei</div>
+          </div>
+          <p class="fb-sub">Le informazioni base su di te e sul tuo studio.</p>
+
+          <div class="frow">
+            <div class="f">
+              <label for="nome">Nome e cognome <span class="req">*</span></label>
+              <input type="text" id="nome" placeholder="Mario Rossi" autocomplete="name" required />
+            </div>
+            <div class="f">
+              <label for="studio">Nome dello studio</label>
+              <input type="text" id="studio" placeholder="Studio Rossi & Associati" />
+            </div>
+          </div>
+          <div class="frow">
+            <div class="f">
+              <label for="professione">Professione <span class="req">*</span></label>
+              <select id="professione" required>
+                <option value="">Seleziona...</option>
+                <option>Consulente del Lavoro (CDL)</option>
+                <option>Commercialista / Dottore Commercialista</option>
+                <option>Avvocato</option>
+                <option>Notaio</option>
+                <option>Imprenditore / PMI</option>
+                <option>Altro professionista</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="struttura">Struttura</label>
+              <select id="struttura">
+                <option value="">Seleziona...</option>
+                <option>Solo (solopreneur)</option>
+                <option>Studio associato 2–5 persone</option>
+                <option>Studio strutturato 6+ persone</option>
+              </select>
+            </div>
+          </div>
+          <div class="frow">
+            <div class="f">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="nome@studio.it" autocomplete="email" required />
+            </div>
+            <div class="f">
+              <label for="telefono">Telefono</label>
+              <input type="tel" id="telefono" placeholder="+39 333 000 0000" autocomplete="tel" />
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 2 — Come lavori -->
+        <div class="fb fu">
+          <div class="fb-head">
+            <div class="fb-icon">⚙️</div>
+            <div class="fb-title">Come lavori</div>
+          </div>
+          <p class="fb-sub">I tuoi strumenti e dove perdi più tempo — questa è la parte che leggiamo con più attenzione.</p>
+
+          <div class="frow">
+            <div class="f">
+              <label for="gestionale">Gestionale / software principale</label>
+              <input type="text" id="gestionale" placeholder="Zucchetti, TeamSystem, Profis, Excel..." />
+            </div>
+            <div class="f">
+              <label for="comunicazione">Comunicazione con i clienti</label>
+              <select id="comunicazione">
+                <option value="">Seleziona...</option>
+                <option>Email</option>
+                <option>WhatsApp</option>
+                <option>Telefono prevalentemente</option>
+                <option>Mix email + WhatsApp</option>
+                <option>Portale dedicato</option>
+              </select>
+            </div>
+          </div>
+          <div class="f">
+            <label>Dove perdi più tempo (seleziona tutto quello che si applica)</label>
+            <div class="chk-group">
+              <label class="chk"><input type="checkbox" name="pain" value="Email ricorrenti ai clienti (richiesta documenti, scadenze, aggiornamenti)" /><span>Email ricorrenti ai clienti — richiesta documenti, scadenze, aggiornamenti</span></label>
+              <label class="chk"><input type="checkbox" name="pain" value="Redazione documenti ricorrenti (comunicazioni, relazioni, lettere standard)" /><span>Redazione documenti ricorrenti — comunicazioni, relazioni, lettere standard</span></label>
+              <label class="chk"><input type="checkbox" name="pain" value="Ricerca normativa (INPS, circolari, aggiornamenti fiscali, sentenze)" /><span>Ricerca normativa — INPS, circolari, aggiornamenti fiscali, sentenze</span></label>
+              <label class="chk"><input type="checkbox" name="pain" value="Inserimento dati tra sistemi diversi (copia-incolla, doppio inserimento)" /><span>Inserimento dati tra sistemi — copia-incolla, doppio inserimento</span></label>
+              <label class="chk"><input type="checkbox" name="pain" value="Gestione scadenze e promemoria ai clienti" /><span>Gestione scadenze e promemoria ai clienti</span></label>
+              <label class="chk"><input type="checkbox" name="pain" value="Risposta a domande ripetitive dei clienti" /><span>Risposta a domande ripetitive dei clienti</span></label>
+            </div>
+          </div>
+          <div class="f" style="margin-top:14px;">
+            <label for="pain_desc">Descrivi il caso concreto che ti pesa di più <span class="req">*</span></label>
+            <textarea id="pain_desc" style="min-height:108px;" placeholder='Es. "Ogni aprile scrivo 15–20 email quasi identiche per richiedere documenti ai clienti. Cambio solo il nome, ma devo farlo a mano ogni volta. Mi prende mezza mattina."' required></textarea>
+          </div>
+        </div>
+
+        <!-- BLOCK 3 — Cosa vuoi -->
+        <div class="fb fu">
+          <div class="fb-head">
+            <div class="fb-icon">🎯</div>
+            <div class="fb-title">Cosa vuoi ottenere</div>
+          </div>
+          <p class="fb-sub">L'obiettivo finale — anche libero, non serve essere precisi.</p>
+
+          <div class="f">
+            <label for="obiettivo">Se potessi eliminare una cosa dalla tua settimana, quale sarebbe?</label>
+            <textarea id="obiettivo" placeholder="Scrivi liberamente — non c'è risposta giusta o sbagliata..."></textarea>
+          </div>
+          <div class="frow">
+            <div class="f">
+              <label for="ai_exp">Hai già usato strumenti AI?</label>
+              <select id="ai_exp">
+                <option value="">Seleziona...</option>
+                <option>Sì, regolarmente (ChatGPT, Copilot, ecc.)</option>
+                <option>Sì, ma in modo non strutturato</option>
+                <option>Ho provato, non mi hanno convinto</option>
+                <option>No, mai</option>
+              </select>
+            </div>
+            <div class="f">
+              <label for="clienti_n">Clienti attivi (indicativo)</label>
+              <select id="clienti_n">
+                <option value="">Seleziona...</option>
+                <option>Meno di 30</option>
+                <option>30 – 80</option>
+                <option>80 – 200</option>
+                <option>Più di 200</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="sub-area fu">
+          <div class="sub-card">
+            <div class="promises">
+              <div class="promise">
+                <div class="promise-icon">⚡</div>
+                <div class="promise-title">Risposta entro 24 ore</div>
+                <div class="promise-sub">Analisi personalizzata del tuo caso</div>
+              </div>
+              <div class="promise">
+                <div class="promise-icon">🎯</div>
+                <div class="promise-title">Nessun obbligo</div>
+                <div class="promise-sub">Prima vedi la proposta, poi decidi</div>
+              </div>
+              <div class="promise">
+                <div class="promise-icon">🔒</div>
+                <div class="promise-title">Dati protetti</div>
+                <div class="promise-sub">NDA + GDPR compliant</div>
+              </div>
+            </div>
+            <div class="form-err" id="formErr"></div>
+            <button type="submit" class="btn-sub" id="submitBtn">
+              Invia richiesta di consulenza <span class="b-arr">→</span>
+            </button>
+          </div>
+        </div>
+
+      </form>
+
+      <div class="f-success" id="formSuccess">
+        <div class="s-ring">✓</div>
+        <h3>Richiesta ricevuta.</h3>
+        <p>Leggo tutto e ti rispondo entro 24 ore con un'analisi del tuo studio e una proposta concreta.</p>
       </div>
-      <p class="error-msg" id="cf_error"></p>
-      <div class="success-msg" id="cf_success">
-        ✓ Richiesta ricevuta. Ti scrivo entro 24 ore.
-      </div>
-    </form>
+
+    </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container">
+<footer class="footer">
+  <div class="wrap">
     <div class="footer-grid">
-      <div class="col-brand">
-        <div class="brand">
-          <span class="brand-mark">AI</span>
+      <div>
+        <div class="footer-brand">
+          <span class="nav-mark">AI</span>
           <span>AI Installer</span>
         </div>
-        <p>Installiamo agenti AI custom dentro le PMI italiane. Brand della holding Italo Azzi.</p>
+        <p class="footer-desc">Installiamo agenti AI su misura per studi professionali e PMI italiane. Brand della holding Italo Azzi.</p>
       </div>
       <div>
-        <h4>Servizio</h4>
+        <h4>Navigazione</h4>
         <ul>
           <li><a href="#cosa">Cosa installiamo</a></li>
           <li><a href="#processo">Processo</a></li>
-          <li><a href="#prezzi">Prezzi</a></li>
           <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contatto">Consulenza gratuita</a></li>
         </ul>
       </div>
       <div>
         <h4>Contatti</h4>
         <ul>
           <li><a href="mailto:azziitalo@gmail.com">azziitalo@gmail.com</a></li>
-          <li><a href="#contatto">Prenota discovery</a></li>
-          <li><a href="https://www.linkedin.com/in/italoazzi" target="_blank" rel="noopener">LinkedIn Italo</a></li>
+          <li><a href="https://www.linkedin.com/in/italoazzi" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
       </div>
     </div>
-    <div class="copyright">
+    <div class="footer-btm">
       <span>© 2026 AI Installer · Italo Azzi Holding</span>
-      <span class="mono">v2026.05 · built with care</span>
+      <span>Compliance AI Act · GDPR</span>
     </div>
   </div>
 </footer>
 
 <script>
-  /* ===== FAQ ACCORDION ===== */
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.parentElement.classList.toggle('open');
+(function () {
+  const WEBHOOK = 'https://consulenza-webhook-production.up.railway.app/consulenza';
+  const BOT     = '8540359465:AAGGj3TmfYmfjYmMfiAc7A3QLrpmlwYet8U';
+  const CHAT    = '8336001793';
+
+  const tg = (text) => fetch(`https://api.telegram.org/bot${BOT}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: CHAT, text, parse_mode: 'HTML' })
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-btn').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
     });
   });
 
-  /* ===== FADE UP ON SCROLL ===== */
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-  /* ===== CONTACT FORM ===== */
-  (function() {
-    const WEBHOOK = 'https://consulenza-webhook-production.up.railway.app/consulenza';
-    const BOT     = '8540359465:AAGGj3TmfYmfjYmMfiAc7A3QLrpmlwYet8U';
-    const CHAT    = '8336001793';
-
-    const tg = (text) => fetch(`https://api.telegram.org/bot${BOT}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT, text, parse_mode: 'HTML' })
-    });
-
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('cf_submit');
-      const err = document.getElementById('cf_error');
-      const ok  = document.getElementById('cf_success');
-
-      const nome    = document.getElementById('cf_nome').value.trim();
-      const email   = document.getElementById('cf_email').value.trim();
-      const settore = document.getElementById('cf_settore').value;
-      const msg     = document.getElementById('cf_msg').value.trim();
-
-      if (!nome || !email || !settore) {
-        err.textContent = 'Compila nome, email e settore.';
-        err.style.display = 'block';
-        return;
-      }
-      err.style.display = 'none';
-      btn.disabled = true;
-      btn.textContent = 'Invio in corso…';
-
-      const payload = { nome, email, settore, messaggio: msg, source: 'landing-ai-installer' };
-
-      // 1. localStorage sempre per primo — non può fallire
-      try { localStorage.setItem('ai_installer_lead_backup', JSON.stringify({...payload, ts: Date.now()})); } catch(_) {}
-
-      // 2. Railway + Telegram in parallelo, non bloccanti tra loro
-      Promise.allSettled([
-        fetch(WEBHOOK, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        }),
-        tg(`🎯 <b>Nuovo lead AI Installer</b>\n👤 ${nome}\n📧 ${email}\n🏢 ${settore}\n💬 ${msg || '—'}`)
-      ]);
-
-      // 3. Mostra sempre success — il dato è già in localStorage, Railway e Telegram girano in background
-      document.getElementById('contactForm').style.display = 'none';
-      ok.style.display = 'block';
-    });
-  })();
-
-  /* ===== TERMINAL CURSOR BLINK ===== */
-  setInterval(() => {
-    const c = document.getElementById('cursor');
-    if (c) c.style.opacity = c.style.opacity === '0' ? '1' : '0';
-  }, 600);
-
-  /* ===== SMOOTH SCROLL OFFSET FOR FIXED NAV ===== */
+  // Smooth scroll with nav offset
   document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
+    a.addEventListener('click', function (e) {
       const id = this.getAttribute('href');
       if (id.length > 1) {
         const el = document.querySelector(id);
         if (el) {
           e.preventDefault();
-          const top = el.getBoundingClientRect().top + window.scrollY - 70;
-          window.scrollTo({ top, behavior: 'smooth' });
+          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 66, behavior: 'smooth' });
         }
       }
     });
   });
-</script>
 
+  // Fade-up on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fu').forEach(el => io.observe(el));
+
+  // Progress bar
+  function updateProgress () {
+    const blocks = document.querySelectorAll('.fb');
+    let filled = 0;
+    blocks.forEach(b => {
+      const hasVal = [...b.querySelectorAll('input:not([type=checkbox]),select,textarea')]
+        .some(el => el.value.trim());
+      const hasChk = b.querySelector('input[type=checkbox]:checked');
+      if (hasVal || hasChk) filled++;
+    });
+    const pct = Math.round(filled / blocks.length * 100);
+    document.getElementById('progFill').style.width = pct + '%';
+    document.getElementById('progPct').textContent = pct + '%';
+  }
+  document.querySelectorAll('input,select,textarea').forEach(el => {
+    el.addEventListener('input', updateProgress);
+    el.addEventListener('change', updateProgress);
+  });
+
+  // Form submit
+  document.getElementById('consultForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const errEl = document.getElementById('formErr');
+    const btn   = document.getElementById('submitBtn');
+
+    const nome     = document.getElementById('nome').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const prof     = document.getElementById('professione').value;
+    const painDesc = document.getElementById('pain_desc').value.trim();
+
+    errEl.textContent = '';
+    if (!nome)  { errEl.textContent = 'Inserisci il tuo nome.'; return; }
+    if (!prof)  { errEl.textContent = 'Seleziona la tua professione.'; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = 'Email non valida.'; return; }
+    if (!painDesc) { errEl.textContent = 'Descrivi il caso che ti pesa di più (blocco 2).'; return; }
+
+    btn.disabled = true;
+    btn.innerHTML = 'Invio in corso... <span class="b-arr">→</span>';
+
+    const v    = id => { const el = document.getElementById(id); return el?.value?.trim() || '—'; };
+    const cut  = s => s.length > 800 ? s.slice(0, 800) + '…' : s;
+    const pains = [...document.querySelectorAll('input[name=pain]:checked')].map(c => '• ' + c.value).join('\n');
+
+    const payload = {
+      nome, email,
+      professione: prof,
+      studio: v('studio'),
+      struttura:   v('struttura'),
+      telefono:    v('telefono'),
+      gestionale:  v('gestionale'),
+      comunicazione: v('comunicazione'),
+      pain_punti:  pains,
+      pain_desc:   painDesc,
+      obiettivo:   v('obiettivo'),
+      ai_exp:      v('ai_exp'),
+      clienti_n:   v('clienti_n'),
+      source: 'landing-ai-installer'
+    };
+
+    // localStorage first — never fails
+    try {
+      localStorage.setItem('ai_installer_lead_' + Date.now(), JSON.stringify({ ...payload, ts: new Date().toISOString() }));
+    } catch (_) {}
+
+    const tgMsg = [
+      `📋 <b>NUOVA CONSULENZA — AI Installer</b>`, '',
+      `<b>👤 CHI È</b>`,
+      `Nome: ${nome}`, `Professione: ${prof}`, `Studio: ${v('studio')}`,
+      `Struttura: ${v('struttura')}`, `Email: ${email}`, `Tel: ${v('telefono')}`, `Clienti: ${v('clienti_n')}`, '',
+      `<b>⚙️ COME LAVORA</b>`,
+      `Gestionale: ${v('gestionale')}`, `Comunicazione: ${v('comunicazione')}`,
+      `Pain punti:\n${pains || '(nessuna checkbox)'}`, '',
+      `Caso principale:\n${cut(painDesc)}`, '',
+      `<b>🎯 OBIETTIVO</b>`,
+      `${cut(v('obiettivo'))}`, '',
+      `AI exp: ${v('ai_exp')}`,
+    ].join('\n');
+
+    // Railway + Telegram in parallel, non-blocking
+    Promise.allSettled([
+      fetch(WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }),
+      tg(tgMsg)
+    ]);
+
+    // Always show success — data is already in localStorage, backend runs in background
+    document.getElementById('consultForm').style.display = 'none';
+    const s = document.getElementById('formSuccess');
+    s.classList.add('show');
+    s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
 </body>
 </html>
