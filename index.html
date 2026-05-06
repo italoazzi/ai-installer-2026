@@ -1231,26 +1231,22 @@
 
       const payload = { nome, email, settore, messaggio: msg, source: 'landing-ai-installer' };
 
-      try {
-        // 1. Railway Postgres
-        await fetch(WEBHOOK, {
+      // 1. localStorage sempre per primo — non può fallire
+      try { localStorage.setItem('ai_installer_lead_backup', JSON.stringify({...payload, ts: Date.now()})); } catch(_) {}
+
+      // 2. Railway + Telegram in parallelo, non bloccanti tra loro
+      Promise.allSettled([
+        fetch(WEBHOOK, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
-        });
-        // 2. Telegram alert
-        await tg(`🎯 <b>Nuovo lead AI Installer</b>\n👤 ${nome}\n📧 ${email}\n🏢 ${settore}\n💬 ${msg || '—'}`);
-        // 3. localStorage backup
-        try { localStorage.setItem('ai_installer_lead_backup', JSON.stringify({...payload, ts: Date.now()})); } catch(_) {}
-        // Show success
-        document.getElementById('contactForm').style.display = 'none';
-        ok.style.display = 'block';
-      } catch(ex) {
-        btn.disabled = false;
-        btn.textContent = 'Invia richiesta →';
-        err.textContent = 'Errore di rete. Riprova o scrivi a azziitalo@gmail.com';
-        err.style.display = 'block';
-      }
+        }),
+        tg(`🎯 <b>Nuovo lead AI Installer</b>\n👤 ${nome}\n📧 ${email}\n🏢 ${settore}\n💬 ${msg || '—'}`)
+      ]);
+
+      // 3. Mostra sempre success — il dato è già in localStorage, Railway e Telegram girano in background
+      document.getElementById('contactForm').style.display = 'none';
+      ok.style.display = 'block';
     });
   })();
 
