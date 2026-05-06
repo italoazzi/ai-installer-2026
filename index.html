@@ -214,19 +214,8 @@
     .sec-head h2 { margin-bottom: 14px; }
     .sec-head p { font-size: clamp(15px, 1.4vw, 17px); color: var(--text-d); line-height: 1.75; }
 
-    /* PAIN — stessa palette dark, glow caldo/rosso per segnalare "problema" */
-    .pain { background: #06101f; position: relative; overflow: hidden; }
-    .pain::before {
-      content: '';
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 1000px; height: 700px;
-      background:
-        radial-gradient(ellipse at 40% 40%, rgba(255,80,60,.07) 0%, transparent 58%),
-        radial-gradient(ellipse at 65% 65%, rgba(251,146,60,.05) 0%, transparent 52%);
-      pointer-events: none; z-index: 0;
-    }
-    .pain .wrap { position: relative; z-index: 1; }
+    /* PAIN */
+    .pain { background: #06101f; }
     .pain-list { margin-top: 60px; }
     .pain-item {
       display: grid; grid-template-columns: 100px 1fr; gap: 40px;
@@ -237,7 +226,7 @@
     .pain-n {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-size: 68px; font-weight: 900; letter-spacing: -.04em; line-height: 1;
-      color: rgba(255,90,60,.22); padding-top: 3px;
+      color: rgba(85,112,255,.20); padding-top: 3px;
     }
     .pain-item h3 { font-size: 22px; margin-bottom: 11px; }
     .pain-item p { font-size: 15px; color: var(--text-d); line-height: 1.75; max-width: 580px; }
@@ -595,24 +584,7 @@
           <span class="td td-r"></span><span class="td td-y"></span><span class="td td-g"></span>
           <span class="term-lbl">studio-bianchi-cdl ~ ai-installer</span>
         </div>
-        <div class="term-body">
-          <div><span class="tp">$</span> <span class="tc">ai-installer analyse</span></div>
-          <div><span class="td2">→ Mappatura studio completata.</span></div>
-          <div><span class="td2">→ Task ripetitivi rilevati: <span class="tcyan">11</span></span></div>
-          <div><span class="td2">→ Ore perse/settimana stimate: <span class="twarn">16.4h</span></span></div>
-          <br>
-          <div><span class="tp">$</span> <span class="tc">ai-installer install</span></div>
-          <div><span class="td2">  agents: intake, bozze, scadenze, normativa</span></div>
-          <br>
-          <div><span class="tok">✓</span> <span class="td2">Agente Intake attivo (email + WhatsApp)</span></div>
-          <div><span class="tok">✓</span> <span class="td2">Agente Bozze collegato ai tuoi template</span></div>
-          <div><span class="tok">✓</span> <span class="td2">Agente Scadenze su Calendar + alert</span></div>
-          <div><span class="tok">✓</span> <span class="td2">Agente Normativa (INPS, circolari, Fisco)</span></div>
-          <br>
-          <div><span class="td2">→ Setup completato in <span class="tcyan">12 giorni</span>.</span></div>
-          <div><span class="td2">→ Stima ore liberate: <span class="tok">~14h/settimana</span></span></div>
-          <div><span class="tp">$</span> <span class="tcursor"></span></div>
-        </div>
+        <div class="term-body" id="termBody"></div>
       </div>
     </div>
   </div>
@@ -1392,6 +1364,91 @@
     s.classList.add('show');
     s.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
+})();
+</script>
+
+<script>
+/* Terminal typing animation */
+(function () {
+  var el = document.getElementById('termBody');
+  if (!el) return;
+
+  var CHAR = 42; // ms per character
+
+  var seq = [
+    { k:'cmd', t:'ai-installer analyse',                                              p:680 },
+    { k:'out', t:'→ Mappatura studio completata.',                                    p:300 },
+    { k:'out', t:'→ Task ripetitivi rilevati: <span class="tcyan">11</span>',         p:260 },
+    { k:'out', t:'→ Ore perse/settimana stimate: <span class="twarn">16.4h</span>',   p:260 },
+    { k:'br',                                                                          p:420 },
+    { k:'cmd', t:'ai-installer install',                                              p:360 },
+    { k:'dim', t:'  agents: intake, bozze, scadenze, normativa',                      p:240 },
+    { k:'br',                                                                          p:180 },
+    { k:'ok',  t:'Agente Intake attivo (email + WhatsApp)',                            p:240 },
+    { k:'ok',  t:'Agente Bozze collegato ai tuoi template',                            p:240 },
+    { k:'ok',  t:'Agente Scadenze su Calendar + alert',                               p:240 },
+    { k:'ok',  t:'Agente Normativa (INPS, circolari, Fisco)',                          p:240 },
+    { k:'br',                                                                          p:320 },
+    { k:'out', t:'→ Setup completato in <span class="tcyan">12 giorni</span>.',        p:240 },
+    { k:'out', t:'→ Stima ore liberate: <span class="tok">~14h/settimana</span>',      p:0   },
+  ];
+
+  function wait(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
+
+  function addLine(html) {
+    var d = document.createElement('div');
+    d.innerHTML = html;
+    el.appendChild(d);
+  }
+
+  async function typeCmd(text) {
+    var row = document.createElement('div');
+    el.appendChild(row);
+    var prompt = document.createElement('span');
+    prompt.className = 'tp';
+    prompt.textContent = '$ ';
+    row.appendChild(prompt);
+    var typed = document.createElement('span');
+    typed.className = 'tc';
+    row.appendChild(typed);
+    var cur = document.createElement('span');
+    cur.className = 'tcursor';
+    row.appendChild(cur);
+    for (var i = 0; i < text.length; i++) {
+      typed.textContent += text[i];
+      await wait(CHAR);
+    }
+    cur.remove();
+  }
+
+  async function run() {
+    await wait(480);
+    for (var i = 0; i < seq.length; i++) {
+      var s = seq[i];
+      if (s.k === 'br') {
+        el.appendChild(document.createElement('br'));
+      } else if (s.k === 'cmd') {
+        await typeCmd(s.t);
+      } else if (s.k === 'out' || s.k === 'dim') {
+        addLine('<span class="td2">' + s.t + '</span>');
+      } else if (s.k === 'ok') {
+        addLine('<span class="tok">✓</span> <span class="td2">' + s.t + '</span>');
+      }
+      if (s.p) await wait(s.p);
+    }
+    var fin = document.createElement('div');
+    fin.innerHTML = '<span class="tp">$ </span><span class="tcursor"></span>';
+    el.appendChild(fin);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { obs.disconnect(); run(); }
+    }, { threshold: 0.4 });
+    obs.observe(el);
+  } else {
+    run();
+  }
 })();
 </script>
 </body>
