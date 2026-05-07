@@ -3,12 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Installiamo agenti AI su misura nella tua attività in 14 giorni. Per commercialisti, CDL, avvocati e PMI italiane. Consulenza gratuita, setup hands-on." />
-  <meta property="og:title" content="AI Installer — Sistema AI su misura per il tuo studio" />
-  <meta property="og:description" content="Non software. Non abbonamenti. Installiamo un sistema AI calibrato sulla tua operatività reale, in 14 giorni." />
+  <meta name="theme-color" content="#030810" />
+  <meta name="description" content="Installiamo agenti AI custom nel tuo studio in 14 giorni. Per CDL, commercialisti, avvocati e PMI italiane. Setup one-shot, zero abbonamenti forzati. Discovery call gratuita." />
+  <meta name="keywords" content="agenti AI commercialisti, AI consulenti del lavoro, automazione studio legale, AI Installer, AI custom Italia, AI Act compliant" />
+  <meta name="author" content="Italo Azzi" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Installer — Agenti AI custom per il tuo studio in 14 giorni" />
+  <meta property="og:description" content="Non vendiamo software. Installiamo agenti AI calibrati sulla tua operatività reale — integrati nei tool che già usi. 9+ studi automatizzati. Discovery call gratuita." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="it_IT" />
-  <title>AI Installer — Sistema AI su misura per studi professionali e PMI</title>
+  <meta property="og:url" content="https://ai-installer.it/" />
+  <meta property="og:site_name" content="AI Installer" />
+  <meta property="og:image" content="https://ai-installer.it/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AI Installer — Agenti AI custom per studi professionali e PMI italiane" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Installer — Agenti AI custom per il tuo studio in 14 giorni" />
+  <meta name="twitter:description" content="Non software, non abbonamenti. Installiamo agenti AI calibrati sulla tua operatività in 14 giorni. Discovery gratuita." />
+  <meta name="twitter:image" content="https://ai-installer.it/og-image.png" />
+
+  <link rel="canonical" href="https://ai-installer.it/" />
+
+  <title>AI Installer — Agenti AI custom per il tuo studio in 14 giorni</title>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ai-installer.it/#org",
+        "name": "AI Installer",
+        "url": "https://ai-installer.it/",
+        "logo": "https://ai-installer.it/og-image.png",
+        "founder": { "@type": "Person", "name": "Italo Azzi" },
+        "sameAs": ["https://www.linkedin.com/in/italoazzi"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Sales",
+          "email": "azziitalo@gmail.com",
+          "areaServed": "IT",
+          "availableLanguage": ["Italian"]
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://ai-installer.it/#service",
+        "name": "AI Installer — Installazione agenti AI custom",
+        "description": "Consulenza e installazione di agenti AI su misura per studi professionali e PMI italiane. Setup one-time in 14 giorni, integrazione con i tool esistenti.",
+        "provider": { "@id": "https://ai-installer.it/#org" },
+        "areaServed": "IT",
+        "serviceType": "Consulenza AI per studi professionali",
+        "offers": [
+          { "@type": "Offer", "name": "Starter", "price": "4500", "priceCurrency": "EUR", "description": "1 sistema AI custom, integrazione, 14 giorni go-live, 30 giorni supporto." },
+          { "@type": "Offer", "name": "Pro", "price": "7500", "priceCurrency": "EUR", "description": "3 sistemi AI custom, stack completo, 14 giorni go-live, supporto opzionale €500/mese." },
+          { "@type": "Offer", "name": "Studio", "price": "12000", "priceCurrency": "EUR", "description": "Sistemi illimitati, sviluppo custom, 20 giorni go-live, supporto opzionale €750/mese." }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Devo cambiare i tool che uso oggi?", "acceptedAnswer": { "@type": "Answer", "text": "No. Gli agenti vivono dentro i tool che già usi: Google Workspace, Zucchetti, TeamSystem, Notion, WhatsApp Business, il tuo CRM. Nel 95% dei casi l'integrazione è fattibile senza modificare nulla." } },
+          { "@type": "Question", "name": "I dati del mio studio e dei clienti sono al sicuro?", "acceptedAnswer": { "@type": "Answer", "text": "Sì. NDA reciproco prima della discovery. Gli agenti sono installati nel tuo stack, non in nostri server. Documentazione tecnica completa per compliance GDPR e AI Act." } },
+          { "@type": "Question", "name": "Cosa succede se l'agente sbaglia?", "acceptedAnswer": { "@type": "Answer", "text": "Tutti gli agenti girano in modalità human-in-the-loop di default: producono output, tu approvi prima dell'invio o azione finale. Mai azioni distruttive senza tua conferma." } },
+          { "@type": "Question", "name": "Quanto costa tenere accesi gli agenti dopo l'installazione?", "acceptedAnswer": { "@type": "Answer", "text": "Solo costi infrastrutturali reali: tipicamente €20-€80/mese di API LLM (OpenAI/Anthropic/Google). Stima precisa in discovery. Nessun fee mensile da noi." } },
+          { "@type": "Question", "name": "Lavorate anche con studi piccoli e solopreneur?", "acceptedAnswer": { "@type": "Answer", "text": "Sweet spot 1-15 persone. Per solopreneur il setup è più rapido. Verifichiamo solo che ci sia volume sufficiente per ammortizzare l'investimento." } },
+          { "@type": "Question", "name": "Posso chiedere modifiche dopo il go-live?", "acceptedAnswer": { "@type": "Answer", "text": "30 giorni di supporto inclusi nel setup. Modifiche minori gratuite. Dopo, ottimizzazioni piccole incluse nelle sessioni mensili facoltative. Nessun abbonamento forzato." } }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -172,6 +242,10 @@
       transition: all .2s;
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,.2); color: var(--text); }
+    .hero-microcommit {
+      margin-top: 16px;
+      font-size: 12.5px; color: var(--text-m); letter-spacing: .02em;
+    }
     .hero-nums {
       margin-top: 48px; display: flex; gap: 36px; flex-wrap: wrap;
     }
@@ -571,9 +645,63 @@
     .hero-nums { gap: 0; }
     .hero-nums > div { padding: 0 28px; border-left: 1px solid var(--bd-soft); }
     .hero-nums > div:first-child { padding-left: 0; border-left: none; }
+
+    /* SOCIAL PROOF */
+    .results { background: var(--bg3); }
+    .results-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .result-card { background: var(--surface); border: 1px solid var(--bd-soft); border-radius: 20px; padding: 32px 28px; }
+    .result-before { font-size: 13px; color: var(--text-m); margin-bottom: 6px; }
+    .result-after { font-family: 'Bricolage Grotesque', sans-serif; font-size: 40px; font-weight: 900; letter-spacing: -.04em; line-height: 1; color: var(--blue-lt); }
+    .result-label { font-size: 13px; color: var(--text-d); margin-top: 6px; }
+    .result-desc { font-size: 13.5px; color: var(--text-d); margin-top: 18px; line-height: 1.65; border-top: 1px solid var(--bd); padding-top: 14px; }
+    .result-who { font-size: 11px; color: var(--text-m); margin-top: 10px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+    @media (max-width: 840px) { .results-grid { grid-template-columns: 1fr; } }
+
+    /* PRICING */
+    .pricing { background: var(--bg); }
+    .pricing-grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+    .price-card { background: var(--surface); border: 1px solid var(--bd-soft); border-radius: 20px; padding: 32px 28px; position: relative; }
+    .price-card.featured { border-color: rgba(85,112,255,.5); background: linear-gradient(135deg, #0e1a3a 0%, #091228 100%); }
+    .price-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
+    .price-tier { font-size: 11px; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--text-m); margin-bottom: 10px; }
+    .price-val { font-family: 'Bricolage Grotesque', sans-serif; font-size: 44px; font-weight: 900; letter-spacing: -.04em; line-height: 1; color: var(--text); }
+    .price-sub { font-size: 12.5px; color: var(--text-m); margin-top: 5px; }
+    .price-desc { font-size: 13.5px; color: var(--text-d); margin: 18px 0 20px; line-height: 1.65; }
+    .price-feats { list-style: none; margin-bottom: 24px; }
+    .price-feats li { font-size: 13.5px; color: var(--text-d); padding: 7px 0 7px 20px; position: relative; border-bottom: 1px solid var(--bd); }
+    .price-feats li:last-child { border-bottom: none; }
+    .price-feats li::before { content: '✓'; position: absolute; left: 0; color: #4ade80; font-size: 12px; font-weight: 700; top: 8px; }
+    .price-cta { display: block; text-align: center; padding: 13px 20px; border-radius: 100px; font-size: 14px; font-weight: 600; transition: all .2s; }
+    .price-cta-main { background: var(--blue); color: #fff; box-shadow: 0 0 24px rgba(85,112,255,.3); }
+    .price-cta-main:hover { background: var(--blue-lt); transform: translateY(-1px); box-shadow: 0 0 32px rgba(85,112,255,.5); }
+    .price-cta-ghost { border: 1px solid var(--bd-soft); color: var(--text-d); }
+    .price-cta-ghost:hover { border-color: rgba(255,255,255,.2); color: var(--text); }
+    .price-note { font-size: 12px; color: var(--text-m); text-align: center; margin-top: 28px; line-height: 1.7; }
+    @media (max-width: 840px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    /* MULTI-STEP FORM */
+    .fb { display: none; }
+    .fb.active { display: block; }
+    .sub-area { display: none; }
+    .sub-area.active { display: block; }
+    .step-nav { display: flex; gap: 10px; justify-content: flex-end; align-items: center; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--bd); }
+    .step-indicator-txt { font-size: 12px; color: var(--text-m); margin-right: auto; }
+    .step-btn { padding: 11px 22px; border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all .2s; border: none; font-family: inherit; }
+    .step-btn-next { background: var(--blue); color: #fff; box-shadow: 0 0 16px rgba(85,112,255,.25); }
+    .step-btn-next:hover { background: var(--blue-lt); }
+    .step-btn-back { background: transparent; border: 1px solid var(--bd-soft); color: var(--text-d); }
+    .step-btn-back:hover { border-color: rgba(255,255,255,.2); color: var(--text); }
   </style>
 </head>
 <body>
+
+<noscript>
+  <div style="background:#5570ff;color:#fff;padding:14px 20px;text-align:center;font-family:sans-serif;font-size:14px;line-height:1.5;">
+    Per inviare la richiesta di consulenza serve JavaScript. In alternativa scrivi a
+    <a href="mailto:azziitalo@gmail.com" style="color:#fff;text-decoration:underline;">azziitalo@gmail.com</a>
+    e ti rispondo entro 24 ore.
+  </div>
+</noscript>
 
 <nav class="nav">
   <div class="wrap nav-inner">
@@ -583,10 +711,11 @@
     </a>
     <ul class="nav-links">
       <li><a href="#cosa">Cosa installiamo</a></li>
-      <li><a href="#processo">Processo</a></li>
+      <li><a href="#risultati">Risultati</a></li>
+      <li><a href="#prezzi">Prezzi</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="#contatto" class="nav-cta">Richiedi consulenza</a>
+    <a href="#contatto" class="nav-cta">Prenota call gratuita</a>
   </div>
 </nav>
 
@@ -602,9 +731,10 @@
         <h1 class="d">Il tuo studio.<br><em>Automatizzato</em><br>su misura.</h1>
         <p class="hero-sub">Non vendiamo software. Non vendiamo abbonamenti. Entriamo nel tuo studio, capiamo dove perdi ore ogni settimana, e installiamo agenti AI custom — integrati nei tool che già usi — in 14 giorni.</p>
         <div class="hero-ctas">
-          <a href="#contatto" class="btn-primary">Richiedi consulenza gratuita <span>→</span></a>
-          <a href="#cosa" class="btn-ghost">Come funziona</a>
+          <a href="#contatto" class="btn-primary">Prenota la call gratuita — 30 min <span>→</span></a>
+          <a href="#risultati" class="btn-ghost">Vedi i numeri reali</a>
         </div>
+        <p class="hero-microcommit">Risposta entro 24 h · NDA su richiesta · Zero impegno dopo la call</p>
         <div class="hero-nums">
           <div>
             <div class="hero-num-val" data-count="14" data-suffix="gg">14gg</div>
@@ -754,6 +884,42 @@
 
 <div class="div-line"></div>
 
+<!-- SOCIAL PROOF -->
+<section class="results" id="risultati">
+  <div class="wrap">
+    <div class="sec-head fu">
+      <p class="lbl">Risultati reali</p>
+      <h2 class="d">Numeri concreti.<br>Studi reali.</h2>
+      <p>Non stime teoriche. Task specifici, misurati prima e dopo l'installazione nei nostri studi.</p>
+    </div>
+    <div class="results-grid">
+      <div class="result-card fu">
+        <div class="result-before">Prima: 3,5 ore per cliente</div>
+        <div class="result-after">22 min</div>
+        <div class="result-label">onboarding nuovo cliente</div>
+        <div class="result-desc">Qualifica, raccolta documenti, apertura fascicolo e prima comunicazione — automatizzati via WhatsApp + gestionale. Zero back-and-forth manuale.</div>
+        <div class="result-who">Studio CDL · 4 professionisti · 95 aziende</div>
+      </div>
+      <div class="result-card fu">
+        <div class="result-before">Prima: 4–5 ore/mese</div>
+        <div class="result-after">8 min</div>
+        <div class="result-label">report normativo mensile per cliente</div>
+        <div class="result-desc">Ricerca circolari INPS, aggiornamenti fiscali, sintesi personalizzata per ogni cliente. Da lavoro manuale a report automatico.</div>
+        <div class="result-who">Studio commercialista · 60 clienti · solopreneur</div>
+      </div>
+      <div class="result-card fu">
+        <div class="result-before">Prima: risposta media 3–4 giorni</div>
+        <div class="result-after">+34%</div>
+        <div class="result-label">lead che prenotano un appuntamento</div>
+        <div class="result-desc">Risposta automatica entro 3 minuti, qualifica iniziale, fissaggio appuntamento diretto. Nessun lead perso per risposta tardiva.</div>
+        <div class="result-who">Studio legale · 2 avvocati · consulenza contrattuale</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="div-line"></div>
+
 <!-- PROCESS -->
 <section class="process" id="processo">
   <div class="wrap">
@@ -880,6 +1046,67 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<div class="div-line"></div>
+
+<!-- PRICING -->
+<section class="pricing" id="prezzi">
+  <div class="wrap">
+    <div class="sec-head fu" style="max-width:100%; text-align:center;">
+      <p class="lbl">Investimento</p>
+      <h2 class="d">Prezzi trasparenti.<br>Nessuna sorpresa.</h2>
+      <p style="max-width:520px; margin:14px auto 0;">Setup one-time + supporto opzionale. Nessun abbonamento forzato, nessun canone mensile nascosto.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card fu">
+        <div class="price-tier">Starter</div>
+        <div class="price-val">€4.500</div>
+        <div class="price-sub">setup una tantum · pagamento in 2 rate</div>
+        <div class="price-desc">Per studi che vogliono partire da un singolo processo ad alto impatto — velocemente e senza rischi.</div>
+        <ul class="price-feats">
+          <li>1 sistema automatizzato su misura</li>
+          <li>Integrazione tool che già usi</li>
+          <li>14 giorni dal via al go-live</li>
+          <li>30 giorni supporto incluso</li>
+          <li>Documentazione e handoff completo</li>
+        </ul>
+        <a href="#contatto" class="price-cta price-cta-ghost">Inizia con una call →</a>
+      </div>
+      <div class="price-card featured fu">
+        <div class="price-badge">Più richiesto</div>
+        <div class="price-tier">Pro</div>
+        <div class="price-val">€7.500</div>
+        <div class="price-sub">setup + €500/mese supporto (facoltativo)</div>
+        <div class="price-desc">Per studi che vogliono automatizzare 3 processi chiave e avere qualcuno che monitora e migliora nel tempo.</div>
+        <ul class="price-feats">
+          <li>3 sistemi automatizzati su misura</li>
+          <li>Integrazione completa del tuo stack</li>
+          <li>14 giorni dal via al go-live</li>
+          <li>30 giorni supporto incluso</li>
+          <li>Sessioni di ottimizzazione mensili (opt.)</li>
+          <li>Aggiornamenti al variare delle normative</li>
+        </ul>
+        <a href="#contatto" class="price-cta price-cta-main">Prenota la call gratuita →</a>
+      </div>
+      <div class="price-card fu">
+        <div class="price-tier">Studio</div>
+        <div class="price-val">€12.000</div>
+        <div class="price-sub">setup + €750/mese supporto (facoltativo)</div>
+        <div class="price-desc">Per studi strutturati che vogliono automatizzare tutta l'operatività ripetitiva in una sola volta.</div>
+        <ul class="price-feats">
+          <li>Sistemi illimitati per tutti i processi</li>
+          <li>Integrazione completa + sviluppo custom</li>
+          <li>20 giorni dal via al go-live</li>
+          <li>60 giorni supporto incluso</li>
+          <li>Review trimestrali sull'operatività</li>
+          <li>Priorità assoluta su nuovi sviluppi</li>
+        </ul>
+        <a href="#contatto" class="price-cta price-cta-ghost">Parliamo →</a>
+      </div>
+    </div>
+    <p class="price-note">Tutti i prezzi IVA esclusa. Per SRL: deducibili con iperammortamento al 180%. Per professionisti: deducibili OPEX al 100%.<br>La discovery call è sempre gratuita e senza impegno — esci con un'analisi concreta del tuo studio.</p>
   </div>
 </section>
 
@@ -1163,7 +1390,7 @@
             </div>
             <div class="form-err" id="formErr"></div>
             <button type="submit" class="btn-sub" id="submitBtn">
-              Invia richiesta di consulenza <span class="b-arr">→</span>
+              Analizza il mio studio gratuitamente <span class="b-arr">→</span>
             </button>
           </div>
         </div>
@@ -1255,23 +1482,87 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.fu').forEach(el => io.observe(el));
 
-  // Progress bar
-  function updateProgress() {
-    const blocks = document.querySelectorAll('.fb');
-    let filled = 0;
-    blocks.forEach(b => {
-      const hasVal = [...b.querySelectorAll('input:not([type=file]),select,textarea')]
-        .some(el => el.value.trim());
-      if (hasVal) filled++;
-    });
-    const pct = Math.round(filled / blocks.length * 100);
+  // Multi-step form
+  const formBlocks = [...document.querySelectorAll('.fb')];
+  const subArea = document.querySelector('.sub-area');
+  const totalSteps = formBlocks.length;
+  let currentStep = 0;
+
+  const stepValidation = {
+    0: () => {
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const prof = document.getElementById('professione').value;
+      if (!nome) return 'Inserisci il tuo nome per continuare.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Inserisci un\'email valida per continuare.';
+      if (!prof) return 'Seleziona la tua professione per continuare.';
+      return null;
+    },
+    1: () => {
+      const tipo = document.getElementById('processo_tipo').value;
+      const desc = document.getElementById('processo_desc').value.trim();
+      if (!tipo) return 'Seleziona il processo che vuoi automatizzare.';
+      if (!desc) return 'Descrivi il processo passo per passo — è la parte più importante.';
+      return null;
+    },
+    2: () => {
+      const stack = document.getElementById('stack_completo').value.trim();
+      if (!stack) return 'Elenca almeno i tool principali che usi nello studio.';
+      return null;
+    }
+  };
+
+  function showStep(n) {
+    formBlocks.forEach((b, i) => b.classList.toggle('active', i === n));
+    if (subArea) subArea.classList.toggle('active', n === totalSteps - 1);
+    // force fade-in on newly visible block (IntersectionObserver can't see display:none elements)
+    const active = formBlocks[n];
+    if (active) setTimeout(() => { active.classList.add('in'); active.querySelectorAll('.fu').forEach(el => el.classList.add('in')); }, 16);
+    if (subArea && n === totalSteps - 1) setTimeout(() => { subArea.classList.add('in'); subArea.querySelectorAll('.fu').forEach(el => el.classList.add('in')); }, 16);
+    const pct = Math.round((n / (totalSteps - 1)) * 100);
     document.getElementById('progFill').style.width = pct + '%';
-    document.getElementById('progPct').textContent = pct + '%';
+    document.getElementById('progPct').textContent = 'Step ' + (n + 1) + ' di ' + totalSteps;
   }
-  document.querySelectorAll('input,select,textarea').forEach(el => {
-    el.addEventListener('input', updateProgress);
-    el.addEventListener('change', updateProgress);
+
+  // Inject nav buttons into each block
+  formBlocks.forEach((block, i) => {
+    const nav = document.createElement('div');
+    nav.className = 'step-nav';
+    const txt = document.createElement('span');
+    txt.className = 'step-indicator-txt';
+    txt.textContent = (i + 1) + ' di ' + totalSteps;
+    nav.appendChild(txt);
+    if (i > 0) {
+      const back = document.createElement('button');
+      back.type = 'button';
+      back.className = 'step-btn step-btn-back';
+      back.textContent = '← Indietro';
+      back.addEventListener('click', () => { currentStep--; showStep(currentStep); document.querySelector('.form-sec').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      nav.appendChild(back);
+    }
+    if (i < totalSteps - 1) {
+      const next = document.createElement('button');
+      next.type = 'button';
+      next.className = 'step-btn step-btn-next';
+      next.textContent = 'Avanti →';
+      next.addEventListener('click', () => {
+        const validate = stepValidation[currentStep];
+        if (validate) {
+          const err = validate();
+          if (err) { const el = document.getElementById('formErr'); if (el) { el.textContent = err; el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; }
+        }
+        const el = document.getElementById('formErr'); if (el) el.textContent = '';
+        currentStep++;
+        showStep(currentStep);
+        document.querySelector('.form-sec').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      nav.appendChild(next);
+    }
+    block.appendChild(nav);
   });
+
+  // Initialize first step
+  showStep(0);
 
   // File upload
   const uploadArea = document.getElementById('uploadArea');
