@@ -15,16 +15,11 @@
   <meta property="og:locale" content="it_IT" />
   <meta property="og:url" content="https://ai-installer.it/" />
   <meta property="og:site_name" content="AI Installer" />
-  <meta property="og:image" content="https://ai-installer.it/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="AI Installer — Agenti AI custom per studi professionali e PMI italiane" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AI Installer — Agenti AI custom per il tuo studio in 14 giorni" />
   <meta name="twitter:description" content="Non software, non abbonamenti. Installiamo agenti AI calibrati sulla tua operatività in 14 giorni. Discovery gratuita." />
-  <meta name="twitter:image" content="https://ai-installer.it/og-image.png" />
 
   <link rel="canonical" href="https://ai-installer.it/" />
 
@@ -40,7 +35,6 @@
         "@id": "https://ai-installer.it/#org",
         "name": "AI Installer",
         "url": "https://ai-installer.it/",
-        "logo": "https://ai-installer.it/og-image.png",
         "founder": { "@type": "Person", "name": "Italo Azzi" },
         "sameAs": ["https://www.linkedin.com/in/italoazzi"],
         "contactPoint": {
@@ -1382,15 +1376,6 @@
 <script>
 (function () {
   const WEBHOOK = 'https://consulenza-webhook-production.up.railway.app/consulenza';
-  const BOT     = '8540359465:AAGGj3TmfYmfjYmMfiAc7A3QLrpmlwYet8U';
-  const CHAT    = '8336001793';
-
-  const tg = (text) => fetch(`https://api.telegram.org/bot${BOT}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chat_id: CHAT, text, parse_mode: 'HTML' })
-  });
-
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
     item.querySelector('.faq-btn').addEventListener('click', () => {
@@ -1599,35 +1584,7 @@
         localStorage.setItem('ai_installer_lead_' + Date.now(), JSON.stringify(light));
       } catch (_) {}
 
-      const tgMsg = [
-        '📋 <b>NUOVA CONSULENZA — AI Installer</b>', '',
-        '<b>👤 CHI È</b>',
-        nome + ' · ' + prof,
-        'Studio: ' + v('studio') + ' · Team: ' + v('team'),
-        'Email: ' + email + ' · Tel: ' + v('telefono'),
-        'Clienti: ' + v('clienti_n') + ' · Gestionale: ' + v('gestionale'), '',
-        '<b>⚙️ PROCESSO</b>',
-        'Tipo: ' + processoTipo,
-        'Frequenza: ' + v('processo_freq') + ' · Ore/mese: ' + v('processo_ore'),
-        'Trigger: ' + v('processo_trigger') + ' · Chi: ' + v('processo_chi'),
-        'Passo per passo:\n' + cut(processoDesc), '',
-        'Parte frustrante:\n' + cut(v('processo_frustrazione')), '',
-        '<b>🔧 STACK</b>',
-        cut(stackComp),
-        'Integrazione: ' + v('stack_integrazione'),
-        'Archivio: ' + v('stack_archivio'), '',
-        '<b>🎯 OBIETTIVO</b>',
-        cut(v('obiettivo')),
-        'Urgenza: ' + v('urgenza') + ' · Budget: ' + v('budget'),
-        'AI exp: ' + v('ai_exp'),
-        'Allegati: ' + (fileData.length > 0 ? fileData.map(f => f.name).join(', ') : 'nessuno'),
-        'Link: ' + v('link_materiali'),
-      ].join('\n');
-
-      await Promise.allSettled([
-        fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
-        tg(tgMsg)
-      ]);
+      await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
 
       document.getElementById('consultForm').style.display = 'none';
       const s = document.getElementById('formSuccess');
